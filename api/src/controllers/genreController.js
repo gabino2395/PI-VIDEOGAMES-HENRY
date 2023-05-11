@@ -6,7 +6,7 @@ const getGenres = async() => {
         let getGenres = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
 
         const genres = getGenres.data.results.map(el => el.name);
-console.log(genres)
+// console.log(genres)
         return genres;
     }
     catch(e){
@@ -16,3 +16,4 @@ console.log(genres)
 
 
 module.exports = getGenres;
+ 
