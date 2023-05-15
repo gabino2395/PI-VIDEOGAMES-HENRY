@@ -2,9 +2,8 @@
 BACKEND:
 
 -refactorizar codigo rutas en backend
-
+--agregar validaciones el back para el post como hace Jorge
 
 FRONTEND:
-- chequear filtro de "solo de api"
--averiguar porque no llega el genero del juego  de un creado 
-
+-chequear mapeo de nombres de plataformas con los endpoint disponibles,archivo createGame
+-revisar fonts

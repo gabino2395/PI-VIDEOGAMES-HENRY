@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getVideogames } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
-import Paginado from "../Paginado";
+// import Paginado from "../Paginated";
 import Selectors from "../Selectors/Selectors";
-
+import Paginated from "../Paginated";
+import "./Cards.css"
 const Cards = () => {
   const dispatch = useDispatch();
   const allGames = useSelector((state) => state.videogames);
@@ -33,19 +34,20 @@ const Cards = () => {
     e.preventDefault();
     dispatch(getVideogames);
   };
-
   return (
-    <div>
+    <div className="cards-main-container">
       {" "}
       <button onClick={(e) => handleClick(e)}>
         Volver a cargar los personajes
       </button>
       <Selectors setCurrentPage={setCurrentPage} />
-      <Paginado
+      <Paginated
         gamesPerPage={gamesPerPage}
         allGames={allGames.length}
         paginated={paginated}
       />
+      <div className="cards-container">
+
       {allGames &&
         currentGames.map((el) => {
           return (
@@ -54,16 +56,11 @@ const Cards = () => {
               key={el.name}
               name={el.name}
               image={el.image}
-              genres={el.genres?.map((el) => el)}
-
-              // genres={el.genres.map((el)=>{
-              //   return(
-              //     el
-              //   )
-              // })}
+              genres={el.genres?.map((el) => el )}
             />
           );
         })}
+      </div>
     </div>
   );
 };

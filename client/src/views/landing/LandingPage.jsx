@@ -1,0 +1,45 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import "./LandingPage.css";
+import HeroSection from "./HeroSection";
+import Cards from "../../components/Cards/Cards";
+const LandingPage = () => {
+  return (
+    <>
+      <div className="container-scroll">
+        {/* <div className="slider">
+          <HeroSection />
+        </div>
+        <div className="slider">
+          <HeroSection />
+        </div> */}
+        <div className="silder">
+          <Cards />
+        </div>
+        {/* <div className="slider">
+          <HeroSection />
+        </div> */}
+      </div>
+
+      <main className="slider-wrap">
+        {/* <div className="slider">
+          <HeroSection  />
+        </div> */}
+        {/* <div className="slider">
+          <img src="/vite.svg"  alt="" />
+        </div> */}
+        {/* <div className="silder2">
+          <Cards />
+        </div>
+        <div className="silder">
+          <HeroSection />
+        </div>
+        <div className="silder">
+          <HeroSection />
+        </div> */}
+      </main>
+    </>
+  );
+};
+
+export default LandingPage;

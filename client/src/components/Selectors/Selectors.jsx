@@ -86,9 +86,7 @@ const Selectors = ({ setCurrentPage }) => {
             </option>
           ))}
         </select>
-        <select 
-                name='Videogames'
-                onChange={handleFilterCreated}>
+        <select name="Videogames" onChange={handleFilterCreated}>
           <option value="All">All</option>
 
           <option value="created">Creados</option>

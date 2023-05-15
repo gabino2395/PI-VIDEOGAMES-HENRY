@@ -1,17 +1,19 @@
 import { useState } from "react";
-import LandingPage from "./components/landing/landingPage";
-import "./App.css";
+import LandingPage from "./views/landing/landingPage";
+// import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/home/Home";
+import Home from "./views/home/Home";
 import Detail from "./components/Detail/Detail";
-import CreateGame from "./components/CreateGame/CreateGame";
+import CreateGame from "./views/CreateGame/CreateGame";
+import Nav from "./components/Nav/Nav";
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
     <>
+    <Nav/>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage/>} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/home" element={<Home />} />
         <Route path="/createGame" element={<CreateGame />} />

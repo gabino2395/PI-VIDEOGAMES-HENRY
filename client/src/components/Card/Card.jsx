@@ -1,16 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const Card = ({ name, image, genres ,id}) => {
+import "./Card.css";
+const Card = ({ name, image, genres, id }) => {
   return (
-    <div>
-      <Link to={`/detail/${id}`}>
-      <h3>{name}</h3>
-      <ul>
-        <li>{genres}</li>
-      </ul>
+    <div className="card">
+      <div className="card-details">
+        <ul className="genres-card2">
+          <li className="genres-card-li">
+            <ul>
+              {genres.map((genre) => (
+                <p>{genre}</p>
+              ))}{" "}
+            </ul>
+
+            {/* <p>{genres[0]}</p> */}
+            {/* <p>{genres[1]}</p> */}
+            {/* <p>{genres[0] + "/" + genres[1] && genres[1]} </p> */}
+          </li>
+        </ul>
+        <h3 className="card-detail-name">{name}</h3>
+        <div className="detail-btn-box">
+          <Link className="detail-btn" to={`/detail/${id}`}>
+            Detail
+          </Link>
+        </div>
+      </div>
       <img src={image} alt="" width="200px" height="250px" />
-      </Link>
     </div>
   );
 };
