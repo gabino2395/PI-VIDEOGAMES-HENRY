@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   filterByGenres,
   filterCreated,
+  // getGenres,
   getVideogames,
   orderGames,
 } from "../../redux/actions";
@@ -12,7 +13,7 @@ import axios from "axios";
 
 const endpointGenre = "http://localhost:3001/genres";
 
-const Selectors = ({setCurrentPage}) => {
+const Selectors = ({ setCurrentPage }) => {
   const dispatch = useDispatch();
   const [genres, setGenres] = useState([]);
   let [genre, setGenre] = useState("All genres");
@@ -34,16 +35,20 @@ const Selectors = ({setCurrentPage}) => {
     fetchData();
   }, []);
 
+  // const handleGenre = (event) => {
+  //   dispatch(getGenres(event.target.value));
+  //   setGenre((genre = event.target.value));
+  // };
+  const handleOrder = (event) => {
+    dispatch(orderGames(event.target.value));
+    setCurrentPage(1);
+    setAux(true);
+  };
   const handleFilterGenre = (event) => {
     dispatch(filterByGenres(event.target.value));
     setGenre((genre = event.target.value));
   };
 
-  const handleOrder = (event) => {
-    dispatch(orderGames(event.target.value));
-    setCurrentPage(1)
-    setAux(true);
-  };
   const handleFilterCreated = (event) => {
     dispatch(filterCreated(event.target.value));
   };
@@ -52,12 +57,14 @@ const Selectors = ({setCurrentPage}) => {
     <div>
       <div>
         <select onChange={handleOrder}>
+          {/* <option value="All">All</option> */}
           <option value="A">Ascendente</option>
           <option value="D">Descendente</option>
         </select>
 
         <select
           onChange={(event) => handleFilterGenre(event)}
+          // onChange={(event) => handleGenre(event)}
           name="All genres"
           id=""
           value={genre}
@@ -69,13 +76,19 @@ const Selectors = ({setCurrentPage}) => {
           >
             All genres
           </option>
+          {/* <option value="Indie">indie</option>
+          <option value="Action">action</option>
+          <option value="RPG">rpg</option> */}
+
           {genres.map((el) => (
             <option key={el.id} value={el.name}>
               {el.name}
             </option>
           ))}
         </select>
-        <select onChange={handleFilterCreated}>
+        <select 
+                name='Videogames'
+                onChange={handleFilterCreated}>
           <option value="All">All</option>
 
           <option value="created">Creados</option>

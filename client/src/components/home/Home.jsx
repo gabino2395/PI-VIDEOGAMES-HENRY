@@ -1,9 +1,10 @@
 import React from "react";
 import axios from "axios";
 // import { getVideogames } from "../../redux/actions";
-import Selectors from "../selectors/Selectors";
+// import Selectors from "../selectors/Selectors";
 import { Link } from "react-router-dom";
 import Cards from "../Cards/Cards";
+import SearchBar from "../SearchBar/SearchBar";
 
 
 const Home = () => {
@@ -21,6 +22,8 @@ const Home = () => {
       {/* componente de nav */}
       <Link to={"/createGame"}>Crear videojuego</Link>
       <h1>Videogames page</h1>
+      <SearchBar/>
+
       <Cards />
     </div>
   );

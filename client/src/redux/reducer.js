@@ -7,13 +7,18 @@ import {
   FILTER_BY_GENRES,
   GET_ALL_GENRES,
   FILTER_CREATED,
+  GET_VIDEOGAME_BY_NAME,
+  POST_VIDEOGAMES,
+  GET_GENRES,
 } from "./types";
 
 const initialState = {
   videogames: [],
   allVideogames: [],
-  getAllGenresState: [],
-  filterByGenresState: [],
+  genres: [],
+  // getCreatedState: [],
+  // filterByGenresState: [],
+  // genreVideogames: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -23,37 +28,25 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         videogames: payload,
         allVideogames: payload,
-        getAllGenresState: payload,
-        filterByGenresState: payload,
       };
-    // case GET_GENRES:
-    //   const games = state.getAllVideogames;
-    //   const filterGenres = games.filter(el => el.genres.includes(payload.value));
-    //   return {
-    //       ...state,
-    //       getAllGenres: payload.payload,
-    //       getAllGames: filterGenres
-    //   };
 
     case FILTER_BY_GENRES:
-      // const games = [...state.getAllGenresState];
-      const games = state.allVideogames;
+      const games = [...state.allVideogames];
 
-      // const filterGenres = games.filter((el) => el.genres.includes(payload));
       const filterGenres = games.filter((el) => el.genres == payload);
-
+      if (payload === "All genres") {
+        return {
+          ...state,
+          videogames: state.allVideogames,
+        };
+      }
       return {
         ...state,
-        // videogames:
-        //   payload === "All genres" ? [...state.allVideogames] : filterGenres,
-        // videogames:filterGenres
-        getAllGenresState: payload,
-        videogames: filterGenres,
+        videogames: games.filter((el) => el.genres == payload),
       };
 
     case ORDER:
-      // const gamesOrdered = [...state.allVideogames];
-      const gamesOrdered = state.allVideogames;
+      const gamesOrdered = [...state.videogames];
 
       return {
         ...state,
@@ -62,21 +55,51 @@ const reducer = (state = initialState, { type, payload }) => {
             ? gamesOrdered.sort((a, b) => a.id - b.id)
             : gamesOrdered.sort((a, b) => b.id - a.id),
       };
-
     case FILTER_CREATED:
-      const gamesCreatedFilter = [...state.filterByGenresState];
-      const gamesCreated =
-        payload === "created" || payload !== "api"
-          ? gamesCreatedFilter.filter((el) => el.created)
-          : gamesCreatedFilter.filter((el) => !el.created);
+      const allGames = state.allVideogames;
 
-      // const creadosFilter =
-      //   payload === "created"
-      //     ? gamesCreatedFilter.filter((el) => el.id.includes('-'))
-      //     : gamesCreatedFilter.filter((el) => !el.id.includes('-'));
+      if (payload === "created") {
+        const filterId = allGames.filter((el) => el.created);
+        return {
+          ...state,
+          videogames: filterId,
+        };
+      }
+
       return {
         ...state,
-        videogames: payload === "All" ? state.allVideogames : gamesCreated,
+        videogames: allGames.filter((el) => !el.created),
+      };
+
+    case POST_VIDEOGAMES:
+      return {
+        ...state,
+      };
+    case GET_GENRES:
+      return {
+        ...state,
+        genres: payload,
+      };
+    // case FILTER_CREATED:
+    //   const gamesCreatedFilter2 = state.allVideogames;
+    //   const gamesCreatedFilter = [...state.videogames];
+    //   const gamesCreated =
+    //     payload === "created" || payload !== "api"
+
+    //       ? gamesCreatedFilter.filter((el) => el.created)
+
+    //       : gamesCreatedFilter2.filter((el) => !el.created);
+    //   return {
+    //     ...state,
+    //     videogames:
+    //       payload === "All" ? [...state.allVideogames] : gamesCreated,
+    //   };
+
+    case GET_VIDEOGAME_BY_NAME:
+      return {
+        ...state,
+        videogames: payload,
+        // allVideogames: payload,
       };
 
     // case REMOVE_FAV:
@@ -84,18 +107,6 @@ const reducer = (state = initialState, { type, payload }) => {
     //     ...state,
     //     myFavorites: payload,
     //     allCharactersFav: payload,
-    //   };
-
-    // case FILTER:
-    //   const allCharactersFiltered = state.allCharactersFav.filter(
-    //     (character) => character.gender === payload
-    //   );
-    //   return {
-    //     ...state,
-    //     myFavorites:
-    //       payload === "allCharacters"
-    //         ? [...state.allCharactersFav]
-    //         : allCharactersFiltered,
     //   };
 
     default:

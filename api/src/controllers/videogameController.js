@@ -114,7 +114,7 @@ const getInfo = async () => {
   let i = 1;
   let listGames = [];
 
-  while (i < 6) {
+  while (i < 9) {
     let getApi = axios.get(
       `https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`
     );
@@ -149,136 +149,61 @@ const getDbInfo = async () => {
     include: {
       model: Genre,
       attributes: ["name"],
+      // attributes: '',
+
       through: {
         attributes: [],
       },
     },
   });
 };
+const getDB = async() => {
+  try{
+      let allGamesDB = (await Videogame.findAll({
+          attributes: [ 'name', 'image', 'id', 'description', 'released', 'rating', 'platforms','created' ],
+          include: {
+              model: Genre,
+              attributes: [ 'name' ],
+              through: {
+                  attributes: []
+              }
+          }
+      })).map(el => el.toJSON());
+      allGamesDB = allGamesDB.map(el => ({
+          id: el.id,
+          name: el.name,
+          image: el.image,
+          description: el.description,
+          rating: el.rating,
+          released: el.released,
+          genres: el.Genres.map(e => e.name),
+          platforms: el.platforms,
+          created:el.created
+          // website: el.website
+      }));
+
+      return allGamesDB;
+  }
+  catch(e){
+      return { error: 'Not found.' };
+  }
+};
 
 const getAllVideogamesHelper = async () => {
   // const apiInfo = await getApiInfo();
   const apiInfo = await getInfo();
 
-  const dbInfo = await getDbInfo();
+  // const dbInfo = await getDbInfo();
+  const dbInfo = await getDB();
+
   const infoTotal = apiInfo.concat(dbInfo);
   return infoTotal;
 };
 
-// async function createNewGame(req, res, next) {
-//   try {
-//     const {
-//     name,
-//     description,
-//     platforms,
-//     realeased,
-//     created,
-//     rating,
-//     genres,
-//     image,
-//     } = req.body;
-
-//     // Crear el videojuego en la base de datos
-//     const newGame = await Videogame.create({
-//       name,
-//       description,
-//       platforms,
-//       realeased,
-//       created,
-//       rating,
-//       image,
-//     });
-
-//     // Relacionar el videojuego con sus géneros
-//     const gameGenres = await Genre.findAll({
-//       where: { name: genres },
-//     });
-//     await newGame.addGenres(gameGenres);
-
-//     // Devolver el videojuego creado
-//     return res.status(201).json(newGame);
-//   } catch (error) {
-
-// res.status(400).send('Error con la creacion')
-//   }
-// }
-
-// const createdGame = async (
-//   name,
-//   image,
-//   description,
-//   released,
-//   rating,
-//   genres,
-//   platforms,
-//   website
-// ) => {
-//   let createVideogame = await Videogame.create({
-//     name,
-//     image,
-//     description,
-//     released,
-//     rating,
-//     platforms,
-//     website,
-//   });
-
-//   let genreByDb = await Promise.all(
-//     genres.map(async (el) => {
-//       return (
-//         await Genre.findOrCreate({
-//           where: {
-//             name: el,
-//           },
-//         })
-//       )[0].dataValues.id;
-//     })
-//   );
-//   await createVideogame.addGenre(genreByDb);
-
-//   let gameCreated = (
-//     await Videogame.findOne({
-//       attributes: [
-//         "name",
-//         "image",
-//         "id",
-//         "description",
-//         "released",
-//         "rating",
-//         "platforms",
-//         "website",
-//       ],
-//       where: {
-//         name: name,
-//       },
-//       include: {
-//         model: Genre,
-//         attributes: ["name"],
-//         through: {
-//           attributes: [],
-//         },
-//       },
-//     })
-//   ).toJSON();
-//   gameCreated = {
-//     name: gameCreated.name,
-//     image: gameCreated.image,
-//     id: gameCreated.id,
-//     description: gameCreated.description,
-//     released: gameCreated.released,
-//     rating: gameCreated.rating,
-//     platforms: gameCreated.platforms,
-//     genres: gameCreated.Genres.map((el) => el.name),
-//     website: gameCreated.website,
-//   };
-// };
 
 module.exports = {
-  // getAllVideogames,
-  // getDB,
-  // getInfoId,
-  // createdGame,
-  // createNewGame,
+ 
+  getDB,
   getInfoId,
   getInfoByName,
   getAllVideogamesHelper,

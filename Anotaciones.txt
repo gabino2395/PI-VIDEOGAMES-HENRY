@@ -1,0 +1,10 @@
+
+BACKEND:
+
+-refactorizar codigo rutas en backend
+
+
+FRONTEND:
+- chequear filtro de "solo de api"
+-averiguar porque no llega el genero del juego  de un creado 
+
