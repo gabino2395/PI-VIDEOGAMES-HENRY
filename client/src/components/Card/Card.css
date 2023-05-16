@@ -2,7 +2,7 @@
   background: #21222b;
 display: flex;
 flex-direction:row-reverse;
-width: 600px;
+width: 500px;
 /* border: solid wheat; */
 /* justify-content: space-around; */
 gap: 1em;
@@ -11,8 +11,8 @@ border-radius: 12px;
 
 }
 .card img{
-  height: 200px;
-  width: 250px;
+  height: 150px;
+  width: 200px;
   border-radius: 12px;
   padding: 5px;
 }
@@ -34,8 +34,16 @@ border-radius: 12px;
 }
 .genres-card-li{
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  border: solid;
+  flex-wrap: wrap;
  
+}
+.genres-card-li ul{
+  display: flex;
+  flex-wrap: wrap;
+
 }
 .genres-card-li p{
   background: #28273b;
@@ -66,4 +74,7 @@ border-radius: 12px;
   width: 100%;
   /* border: solid; */
   text-align: center;
+}
+.card-rating{
+  color: whitesmoke;
 }

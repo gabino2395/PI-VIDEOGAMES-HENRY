@@ -1,0 +1,47 @@
+.paginated-box {
+  color: red;
+  /* border: solid; */
+  min-height: 40px;
+}
+
+.paginated-box nav {
+  /* text-align: center; */
+  /* border: solid; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.paginated-ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.2em;
+  transition: 1.8s;
+width: 500px;
+overflow-x: scroll;
+margin-bottom: 20px;
+  /* border: solid; */
+}
+
+.paginated-ul li {
+  align-items: center;
+  /* transition: 1.8s; */
+
+}
+
+.paginated-ul li :hover {
+  cursor: pointer;
+  color: black;
+  transition: 0.5s;
+
+}
+
+.anchor-paginated {
+  border: solid;
+  width: 30px;
+  color: red;
+  padding: 5px;
+  border-radius: 5px;
+}

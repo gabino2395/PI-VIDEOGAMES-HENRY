@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { postVideogames, getGenres } from "../../redux/actions";
 import axios from "axios";
 import validate from "./Validate";
+import "./CreateGame.css";
 const CreateGame = () => {
   //////
   const [plataformas, setPlataformas] = useState([]);
@@ -106,9 +107,124 @@ const CreateGame = () => {
   return (
     <div>
       <Link to="/home">
-        <button>volver</button>
+        {/* <button>volver</button> */}
       </Link>
-      <h1>Crear juego!</h1>
+      {/* <h1>Crear juego!</h1> */}
+      <form action="" onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Name: </label>
+          <input
+            type="text"
+            name="name"
+            // onChange={(event) => handleChange(event)}
+            onChange={handleChange}
+            value={input.name}
+            placeholder="Name*"
+            required
+          />
+          {error.name && <p>{error.name}</p>}
+        </div>
+        <div>
+          <label htmlFor="released">Released: </label>
+          <input
+            type="date"
+            value={input.released}
+            name="released"
+            placeholder="Released*"
+            // onChange={(e) => handleChange(e)}
+            onChange={handleChange}
+            required
+          />
+          {error.released && <p>{error.released}</p>}
+        </div>
+        <div>
+          <label htmlFor="rating">Rating: </label>
+          <input
+            type="number"
+            value={input.rating}
+            name="rating"
+            placeholder="Rating*"
+            // onChange={(e) => handleChange(e)}
+            onChange={handleChange}
+            min={0}
+            max={5}
+            required
+          />
+          {error.rating && <p>{error.rating}</p>}
+        </div>
+        <div>
+          <label htmlFor="image">Image: </label>
+          <input
+            type="url"
+            value={input.image}
+            name="image"
+            placeholder="Image*"
+            // onChange={(e) => handleChange(e)}
+            onChange={handleChange}
+            required
+          />
+          {error.image && <p>{error.image}</p>}
+        </div>
+        <div>
+          <label>Genres: </label>
+
+          <select
+            onChange={handleSelectGenre}
+            // onChange={(e) => handleSelectorGenres(e)}
+            required
+            value={input.genres}
+          >
+            {genres.map((el) => (
+              <option value={el.name}>{el.name}</option>
+            ))}
+          </select>
+          {error.genres && <p>{error.genres}</p>}
+
+          <ul>
+            <li>{input.genres.map((el) => el + " ,")}</li>
+          </ul>
+          {/* {error.genres && <p>{error.genres}</p>} */}
+        </div>
+        <label htmlFor="plataformas">Plataformas: </label>
+
+        <select
+          name="plataformas"
+          value={input.platforms}
+          onChange={handleSelectPlatform}
+        >
+          {plataformas.map((plataforma) => (
+            <option key={plataforma} value={plataforma}>
+              {plataforma}
+            </option>
+          ))}
+        </select>
+        {error.platforms && <p>{error.platforms}</p>}
+
+        <ul>
+          <li>{input.platforms.map((el) => el + " ,")}</li>
+        </ul>
+
+        <div></div>
+
+        <div>
+          <div>
+            {/* <label>Description: </label> */}
+            <textarea
+              value={input.description}
+              // onChange={(e) => handleChange(e)}
+              onChange={handleChange}
+              name="description"
+              placeholder="Description*"
+              rows="10"
+              cols="55"
+            >
+              Escribe aquí tus comentarios
+            </textarea>
+            {error.description && <p>{error.description}</p>}
+          </div>
+        </div>
+        <button type="submit">Crear juego</button>
+      </form>
       <form action="" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name: </label>
@@ -229,3 +345,8 @@ const CreateGame = () => {
 };
 
 export default CreateGame;
+/* 
+
+
+
+*/

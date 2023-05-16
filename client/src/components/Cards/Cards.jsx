@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 // import Paginado from "../Paginated";
 import Selectors from "../Selectors/Selectors";
-import Paginated from "../Paginated";
-import "./Cards.css"
+import Paginated from "../Paginated/Paginated";
+import "./Cards.css";
 const Cards = () => {
   const dispatch = useDispatch();
   const allGames = useSelector((state) => state.videogames);
@@ -35,33 +35,35 @@ const Cards = () => {
     dispatch(getVideogames);
   };
   return (
-    <div className="cards-main-container">
-      {" "}
-      <button onClick={(e) => handleClick(e)}>
+    <>
+      <div className="">
+        {" "}
+        {/* <button onClick={(e) => handleClick(e)}>
         Volver a cargar los personajes
-      </button>
-      <Selectors setCurrentPage={setCurrentPage} />
-      <Paginated
-        gamesPerPage={gamesPerPage}
-        allGames={allGames.length}
-        paginated={paginated}
-      />
-      <div className="cards-container">
-
-      {allGames &&
-        currentGames.map((el) => {
-          return (
-            <Card
-              id={el.id}
-              key={el.name}
-              name={el.name}
-              image={el.image}
-              genres={el.genres?.map((el) => el )}
-            />
-          );
-        })}
+      </button> */}
+        {/* <Selectors setCurrentPage={setCurrentPage} /> */}
+        <Paginated
+          gamesPerPage={gamesPerPage}
+          allGames={allGames.length}
+          paginated={paginated}
+        />
+        <div className="cards-container">
+          {allGames &&
+            currentGames.map((el) => {
+              return (
+                <Card
+                  rating={el.rating}
+                  id={el.id}
+                  key={el.name}
+                  name={el.name}
+                  image={el.image}
+                  genres={el.genres?.map((el) => el)}
+                />
+              );
+            })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

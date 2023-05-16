@@ -1,20 +1,20 @@
 import React from "react";
-
+import "./Paginated.css"
 const Paginated = ({ gamesPerPage, allGames, paginated }) => {
   const pageNumbers = [];
   for (let i = 0; i < Math.ceil(allGames / gamesPerPage); i++) {
     pageNumbers.push(i + 1);
   }
   return (
-    <div>
+    <div className="paginated-box">
       <nav>
-        <ul>
+        <ul className="paginated-ul">
           {pageNumbers &&
             pageNumbers.map((number) => {
               return (
                 <li key={number}>
                   {" "}
-                  <a onClick={() => paginated(number)}>
+                  <a className="anchor-paginated" onClick={() => paginated(number)}>
                     {number}
                     {/* "ver mas" */}
                   </a>

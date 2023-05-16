@@ -35,6 +35,9 @@ export const getVideogamebyName = (name) => {
         payload: data,
       });
     } catch (error) {
+      if(!name)
+      console.log("¡No hay personajes con este ID!");
+
       return error.message;
     }
   };

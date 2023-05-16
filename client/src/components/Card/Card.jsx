@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
-const Card = ({ name, image, genres, id }) => {
+const Card = ({ name, image, genres, id,rating }) => {
   return (
     <div className="card">
       <div className="card-details">
@@ -18,6 +18,7 @@ const Card = ({ name, image, genres, id }) => {
             {/* <p>{genres[0] + "/" + genres[1] && genres[1]} </p> */}
           </li>
         </ul>
+        <p className="card-rating">{rating  + ' ★' }</p>
         <h3 className="card-detail-name">{name}</h3>
         <div className="detail-btn-box">
           <Link className="detail-btn" to={`/detail/${id}`}>

@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import CreateGame from "../CreateGame/CreateGame";
 
 
 const Home = () => {
@@ -23,7 +24,7 @@ const Home = () => {
       <Link to={"/createGame"}>Crear videojuego</Link>
       <h1>Videogames page</h1>
       <SearchBar/>
-
+<CreateGame/>
       <Cards />
     </div>
   );

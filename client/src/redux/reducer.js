@@ -51,14 +51,14 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         videogames:
-          payload === "A"
+          payload === "Ascendant"
             ? gamesOrdered.sort((a, b) => a.id - b.id)
             : gamesOrdered.sort((a, b) => b.id - a.id),
       };
     case FILTER_CREATED:
       const allGames = state.allVideogames;
 
-      if (payload === "created") {
+      if (payload === "Created") {
         const filterId = allGames.filter((el) => el.created);
         return {
           ...state,
