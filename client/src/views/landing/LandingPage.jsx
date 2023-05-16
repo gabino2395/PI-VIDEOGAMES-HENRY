@@ -5,7 +5,8 @@ import HeroSection from "./HeroSection";
 import Cards from "../../components/Cards/Cards";
 import CreateGame from "../CreateGame/CreateGame";
 import HeroSection2 from "./HeroSection2";
-import Selectors from "../../components/Selectors/Selectors";
+import Selectors from "../../components/Catalog/Catalog";
+import Catalog from "../../components/Catalog/Catalog";
 const LandingPage = () => {
   return (
     <>
@@ -13,11 +14,17 @@ const LandingPage = () => {
       <div className="container-scroll">
         {/* <div className="slider">
           <HeroSection />
+        </div>
+        <div className="slider">
+          <HeroSection />
         </div> */}
           {/* <Cards /> */}
-          <Selectors/>
         <div className="silder">
+          <Catalog/>
         </div>
+        {/* <div className="silder">
+          <Selectors/>
+        </div> */}
         {/* <div className="slider">
           <HeroSection />
         </div> */}

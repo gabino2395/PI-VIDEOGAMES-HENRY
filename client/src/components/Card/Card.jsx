@@ -5,7 +5,7 @@ const Card = ({ name, image, genres, id,rating }) => {
   return (
     <div className="card">
       <div className="card-details">
-        <ul className="genres-card2">
+        <ul className="genres-card">
           <li className="genres-card-li">
             <ul>
               {genres.map((genre) => (
@@ -18,8 +18,8 @@ const Card = ({ name, image, genres, id,rating }) => {
             {/* <p>{genres[0] + "/" + genres[1] && genres[1]} </p> */}
           </li>
         </ul>
-        <p className="card-rating">{rating  + ' ★' }</p>
         <h3 className="card-detail-name">{name}</h3>
+        <p className="card-rating">{rating  + ' ★' }</p>
         <div className="detail-btn-box">
           <Link className="detail-btn" to={`/detail/${id}`}>
             Detail

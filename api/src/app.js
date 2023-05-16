@@ -14,16 +14,16 @@
 // server.use(cookieParser());
 // server.use(morgan('dev'));
 const express = require("express");
-
+const cors=require('cors')
 const server = express();
 
-server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // update to match the domain you will make the request from
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-  next();
-});
+// server.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // update to match the domain you will make the request from
+//   res.header('Access-Control-Allow-Credentials', 'true');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+//   next();
+// });
 
 // server.use(mainRouter)
 
@@ -38,6 +38,7 @@ server.use((req, res, next) => {
 // module.exports = server;
 const morgan = require("morgan");
 const mainRouter=require('./routes/index')
+server.use(cors())
 server.use(morgan("dev"));
 server.use(express.json());
 server.use(mainRouter)

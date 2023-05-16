@@ -17,7 +17,7 @@ import Paginated from "../Paginated/Paginated";
 import SearchBar from "../SearchBar/SearchBar";
 const endpointGenre = "http://localhost:3001/genres";
 
-const Selectors = ({ setCurrentPage }) => {
+const Catalog = () => {
   const dispatch = useDispatch();
   const [genres, setGenres] = useState([]);
   let [genre, setGenre] = useState("All genres");
@@ -47,7 +47,7 @@ const Selectors = ({ setCurrentPage }) => {
   // };
   const handleOrder = (event) => {
     dispatch(orderGames(event.target.value));
-    setCurrentPage(1);
+    // setCurrentPage(1);
     setAux(true);
     setStateCard(event.target.value);
   };
@@ -158,7 +158,7 @@ const Selectors = ({ setCurrentPage }) => {
           <Cards />
         </div>
       </div>
-      <form>
+      {/* <form>
         <div className="form-group">
           <input type="" name="" value="" hola />
           <label htmlFor="hola">hola:</label>
@@ -169,9 +169,9 @@ const Selectors = ({ setCurrentPage }) => {
           <input type="" name="" value="" hola />
           <label htmlFor="hola">hola:</label>
         </div>
-      </form>
+      </form> */}
     </>
   );
 };
 
-export default Selectors;
+export default Catalog;

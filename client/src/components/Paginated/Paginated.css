@@ -35,13 +35,17 @@ margin-bottom: 20px;
   cursor: pointer;
   color: black;
   transition: 0.5s;
-
+background: #f4f7f9;
+background: #898e96;
 }
 
 .anchor-paginated {
   border: solid;
   width: 30px;
-  color: red;
+  /* color: red; */
+  /* background: #f4f7f9; */
   padding: 5px;
+  color: #898e96;
   border-radius: 5px;
 }
+

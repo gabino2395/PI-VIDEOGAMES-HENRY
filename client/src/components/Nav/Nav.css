@@ -39,3 +39,26 @@ a {
 .logo-box{
   width: 100%;
 }
+
+
+/*///////////////
+  */
+  .cart-icon {
+    width: 10px;
+    height: 1px;
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    /* background-color: #000;
+    color: #fff; */
+    font-size: 15px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    padding-right: 50px;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap'); */
+

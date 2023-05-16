@@ -1,6 +1,9 @@
 const axios = require("axios");
 const { Videogame, Genre } = require("../db/db");
 const { API_KEY } = process.env;
+// const API_KEY='4b5ef4dd9c8c4047ae61e0a237af035e'
+// const API_KEY='968e8c96554f4a3691dd2632e72dac14'
+
 // const { Op } = require("sequelize");
 const getApiInfo = async () => {
   const apiUrl = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);

@@ -14,11 +14,12 @@ const CreateGame = () => {
     async function obtenerPlataformas() {
       try {
         const respuesta = await axios.get(
-          "https://api.rawg.io/api/platforms?key=28d1a3bc3f8a490b9bbdf8331e6bd268"
+          "https://api.rawg.io/api/platforms?key=968e8c96554f4a3691dd2632e72dac14"
         );
         const nombresPlataformas = respuesta.data.results.map(
           (plataforma) => plataforma.name
         );
+        console.log( 'esto es un console del llamado para plataformas de api en createGame')
         setPlataformas(nombresPlataformas);
         // console.log(nombresPlataformas)
       } catch (error) {

@@ -5,9 +5,10 @@ import { getVideogames } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 // import Paginado from "../Paginated";
-import Selectors from "../Selectors/Selectors";
+import Selectors from "../Catalog/Catalog";
 import Paginated from "../Paginated/Paginated";
 import "./Cards.css";
+import Catalog from "../Catalog/Catalog";
 const Cards = () => {
   const dispatch = useDispatch();
   const allGames = useSelector((state) => state.videogames);
@@ -28,6 +29,7 @@ const Cards = () => {
 
   useEffect(() => {
     dispatch(getVideogames());
+    console.log('cuantas veces renderizas desde cards')
   }, []);
 
   const handleClick = (e) => {
@@ -42,6 +44,7 @@ const Cards = () => {
         Volver a cargar los personajes
       </button> */}
         {/* <Selectors setCurrentPage={setCurrentPage} /> */}
+        {/* <Catalog setCurrentPage={setCurrentPage}/> */}
         <Paginated
           gamesPerPage={gamesPerPage}
           allGames={allGames.length}
