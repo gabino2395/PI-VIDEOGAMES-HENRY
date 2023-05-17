@@ -1,8 +1,12 @@
 import React from "react";
 import "./LandingPage.css";
 import { Link } from "react-router-dom";
+import Catalog from "../../components/Catalog/Catalog";
 const HeroSection2 = () => {
   return (
+    <>
+        <Catalog/>
+
     <section className="video-section">
       <div className="video-section-box">
         <header className="video-section-title-box">
@@ -29,6 +33,8 @@ const HeroSection2 = () => {
       </div>
       <div className="video-section"></div>
     </section>
+    
+    </>
   );
 };
 

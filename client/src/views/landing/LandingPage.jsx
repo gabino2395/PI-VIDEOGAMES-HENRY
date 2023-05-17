@@ -7,11 +7,15 @@ import CreateGame from "../CreateGame/CreateGame";
 import HeroSection2 from "./HeroSection2";
 import Selectors from "../../components/Catalog/Catalog";
 import Catalog from "../../components/Catalog/Catalog";
+import Footer from "../../components/Footer/Footer";
 const LandingPage = () => {
   return (
     <>
           {/* <CreateGame/> */}
-      <div className="container-scroll">
+          <Catalog/>
+          <Footer/>
+
+      {/* <div className="container-scroll"> */}
         {/* <div className="slider">
           <HeroSection />
         </div>
@@ -20,7 +24,8 @@ const LandingPage = () => {
         </div> */}
           {/* <Cards /> */}
         <div className="silder">
-          <Catalog/>
+        </div>
+        <div className="slider">
         </div>
         {/* <div className="silder">
           <Selectors/>
@@ -34,7 +39,7 @@ const LandingPage = () => {
         {/* <div className="slider">
           <HeroSection />
         </div> */}
-      </div>
+      {/* </div> */}
 
       {/* <main className="slider-wrap"> */}
         {/* <div className="slider">

@@ -12,17 +12,17 @@ const HeroSection = () => {
           </div>
         </header>
         <footer className="video-section-footer">
-          <Link className="comenzar-btn">Comenzar</Link>
+          <Link to={'/home'} className="comenzar-btn">Comenzar</Link>
         </footer>
       </div>
 
       <div className="video-box">
         {/* <video  muted  src="/valorant-main.mp4"></video> */}
         <video
-          //  autoPlay
+           autoPlay
           muted
-          src="/valorant-main.mp4"
-          // src="valorant2.mp4"
+          // src="/valorant-main.mp4"
+          src="valorant2.mp4"
           // src="/godOfWar.mp4"
         ></video>
       </div>

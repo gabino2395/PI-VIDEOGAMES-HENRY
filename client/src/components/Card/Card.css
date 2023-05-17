@@ -9,8 +9,15 @@ height: 300px;
 gap: 1em;
 padding: 10px;
 border-radius: 30px;
+/* -webkit-box-shadow: 4px 22px 41px 0px rgba(0,0,0,0.75); */
+/* -moz-box-shadow: 4px 22px 41px 0px rgba(0,0,0,0.75); */
+box-shadow: 14px 11px 10px 3px rgba(0,0,0,0.37);
+transition: 0.3s;
 
-
+}
+.card:hover{
+  scale: 1.04;
+margin-right: 50px;
 }
 .card img{
   height: 280px;
@@ -95,4 +102,20 @@ border-radius: 30px;
   color: whitesmoke;
   /* border: solid; */
   text-align: start;
+}
+.container-scroll2 {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  /* height: 3000px; */
+  /* height: 20vh; */
+  height: 10vh;
+  /* overflow: auto; */
+}
+.slider {
+  background-color: black;
+  /* height: 100px; */
+  /* height: 100%; */
+  /* scroll-snap-align:unset; */
+  scroll-snap-align: center;
+
 }

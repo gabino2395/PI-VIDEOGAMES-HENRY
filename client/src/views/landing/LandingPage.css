@@ -64,6 +64,24 @@ video {
   border-radius: 6px;
   backdrop-filter: blur(10px);
   transition: 0.6s;
+
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  /* padding: 5px 10px; */
+  /* font-weight: bold; */
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border-color: #6c6f6d;
+
+  z-index: 1;
+
+
+
 }
 
 .comenzar-btn:hover {
@@ -71,6 +89,29 @@ video {
   /* border: none; */
   /* border-color: black; */
   background: white;
+}
+
+.comenzar-btn:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.comenzar-btn:after {
+  border-radius: 5px;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  z-index: -1;
+  /* box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); */
+  transition: all 0.3s ease;
+  background-color: #dde5df;
+  right: 0;
+}
+
+.css-button-shadow-border-sliding--green:active {
+  top: 2px;
 }
 
 img {}
@@ -119,6 +160,7 @@ img {}
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   /* height: 3000px; */
+  /* height: 20vh; */
   height: 100vh;
   /* overflow: auto; */
 }
@@ -134,7 +176,7 @@ img {}
   /* height: 100px; */
   /* height: 100%; */
   /* scroll-snap-align:unset; */
-  /* scroll-snap-align: center; */
+  scroll-snap-align: center;
 
 }
 

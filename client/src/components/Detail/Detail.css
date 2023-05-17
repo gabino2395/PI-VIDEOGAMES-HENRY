@@ -1,0 +1,147 @@
+.detail-box {
+
+  background: #17181f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.backdrop-img {
+
+  width: 100vw;
+  height: 700px;
+
+
+}
+
+.detail-back-box {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.detail-front-box {
+  /* z-index: 1000; */
+  position: absolute;
+  /* border: solid red; */
+  height: 700px;
+  /* display: flex; */
+  align-items: center;
+  color: #d9dcde;
+  width: 100vw;
+
+
+  background: linear-gradient(to right, rgba(0, 0, 0, 2.9),
+      transparent, transparent, rgba(1, 1, 1, 2.9));
+
+}
+
+.detail-front-cover {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+.detail-img {
+  height: 380px;
+  width: 300px;
+}
+
+.items-detail-box {
+  display: flex;
+  align-items: center;
+
+  margin: 20px;
+  width: 100%;
+  box-shadow: 6px -2px 15px 0px rgba(63, 57, 57, 0.75);
+
+}
+
+.detail-description {
+  font-size: 13px;
+  color: #9799a7;
+
+  max-height: 125px;
+  overflow-y: scroll;
+  line-height: 1.6;
+  color: white;
+  font-weight: bold;
+
+}
+
+.text-detail {
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  backdrop-filter: blur(20px);
+  padding-left: 20px;
+  min-width: 1000px;
+  max-width: 100%;
+}
+
+.detail-title {
+  font-weight: bold;
+  font-size: 40px;
+  color: #ffffff;
+
+}
+
+.date-detail {
+  color: #c6d4df;
+  font-size: 18px;
+}
+
+.rating-detail {}
+
+.star-icon {
+  color: rgb(194, 156, 32);
+}
+
+.badRate {
+  color: red;
+}
+
+.goodRate {
+
+
+  color: green;
+  font-weight: bold;
+  padding: 0 7px;
+  line-height: 19px;
+  display: inline-block;
+  line-height: 19px;
+  padding: 0 7px;
+
+  box-shadow: none;
+  margin-right: 8px;
+  border-radius: 2px;
+  margin-bottom: 3px;
+  white-space: nowrap;
+
+
+
+}
+
+.platform {
+  display: inline-block;
+  line-height: 19px;
+  padding: 0 7px;
+  color: #a5b0b6;
+  background-color: rgba(112, 129, 137, .15);
+  box-shadow: none;
+  margin-right: 8px;
+  border-radius: 2px;
+  margin-bottom: 3px;
+  white-space: nowrap;
+
+  font-size: 10px;
+}
+
+/* color fondo negro : #17181f */
+/* color blanco : #d9dcde */

@@ -10,6 +10,7 @@ import Paginated from "../Paginated/Paginated";
 import "./Cards.css";
 import Catalog from "../Catalog/Catalog";
 const Cards = () => {
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const allGames = useSelector((state) => state.videogames);
   //primero declaramos estado de pagina actual que arranca en 1
@@ -29,6 +30,7 @@ const Cards = () => {
 
   useEffect(() => {
     dispatch(getVideogames());
+    setLoading(false);
     console.log('cuantas veces renderizas desde cards')
   }, []);
 
@@ -39,17 +41,15 @@ const Cards = () => {
   return (
     <>
       <div className="">
-        {" "}
-        {/* <button onClick={(e) => handleClick(e)}>
-        Volver a cargar los personajes
-      </button> */}
-        {/* <Selectors setCurrentPage={setCurrentPage} /> */}
-        {/* <Catalog setCurrentPage={setCurrentPage}/> */}
+        {loading ?  <h1 className="cargando">cargando</h1>:
+       
+      <>
         <Paginated
           gamesPerPage={gamesPerPage}
           allGames={allGames.length}
           paginated={paginated}
         />
+       
         <div className="cards-container">
           {allGames &&
             currentGames.map((el) => {
@@ -65,6 +65,8 @@ const Cards = () => {
               );
             })}
         </div>
+      </>
+}
       </div>
     </>
   );
