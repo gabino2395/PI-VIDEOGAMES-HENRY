@@ -5,12 +5,12 @@ const Nav = () => {
   return (
      <>
     <header>
-      <div className="logo-box"> Videogames</div>
+      <Link to={'/'} className="logo-box"> Videogames</Link>
       <nav>
         <ul>
           <li>
-            <Link className="font-3">Landing</Link>
-            <Link className="font-3">Create</Link>
+            <Link to={'/home'} className="font-3">Landing</Link>
+            <Link to={'/createGame'} className="font-3">Create</Link>
             <Link>About</Link>
           </li>
         </ul>

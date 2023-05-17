@@ -7,6 +7,7 @@ import Detail from "./components/Detail/Detail";
 import CreateGame from "./views/CreateGame/CreateGame";
 import Nav from "./components/Nav/Nav";
 import HeroSection from "./views/landing/HeroSection";
+import Pong from "./components/Pong/Pong";
 function App() {
   // const [count, setCount] = useState(0);
 
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={< HeroSection/>} />
         <Route path="/home" element={<LandingPage/>} />
+        <Route path="/pong" element={<Pong/>} />
 
         <Route path="/detail/:id" element={<Detail />} />
         {/* <Route path="/home" element={<Home />} /> */}

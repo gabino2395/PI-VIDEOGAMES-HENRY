@@ -7,3 +7,4 @@ BACKEND:
 FRONTEND:
 -chequear mapeo de nombres de plataformas con los endpoint disponibles,archivo createGame
 -revisar fonts
+-terminar maquetacion de loading

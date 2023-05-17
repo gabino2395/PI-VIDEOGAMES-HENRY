@@ -6,6 +6,7 @@ import { postVideogames, getGenres } from "../../redux/actions";
 import axios from "axios";
 import validate from "./Validate";
 import "./CreateGame.css";
+import Pong from "../../components/Pong/Pong";
 const CreateGame = () => {
   //////
   const [plataformas, setPlataformas] = useState([]);
@@ -108,9 +109,12 @@ const CreateGame = () => {
   return (
     <div>
       <Link to="/home">
+        home
         {/* <button>volver</button> */}
       </Link>
       {/* <h1>Crear juego!</h1> */}
+      {/* <Pong/> */}
+
       <form action="" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name: </label>
