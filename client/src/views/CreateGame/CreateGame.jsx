@@ -9,27 +9,81 @@ import "./CreateGame.css";
 import Pong from "../../components/Pong/Pong";
 const CreateGame = () => {
   //////
-  const [plataformas, setPlataformas] = useState([]);
+  // const [plataformas, setPlataformas] = useState([]);
 
-  useEffect(() => {
-    async function obtenerPlataformas() {
-      try {
-        const respuesta = await axios.get(
-          "https://api.rawg.io/api/platforms?key=968e8c96554f4a3691dd2632e72dac14"
-        );
-        const nombresPlataformas = respuesta.data.results.map(
-          (plataforma) => plataforma.name
-        );
-        console.log( 'esto es un console del llamado para plataformas de api en createGame')
-        setPlataformas(nombresPlataformas);
-        // console.log(nombresPlataformas)
-      } catch (error) {
-        console.error("Error al obtener datos de la API de Rawg: ", error);
-      }
-    }
-    obtenerPlataformas();
-  }, []);
+  // useEffect(() => {
+  //   async function obtenerPlataformas() {
+  //     try {
+  //       const respuesta = await axios.get(
+  //         "https://api.rawg.io/api/platforms?key=968e8c96554f4a3691dd2632e72dac14"
+  //       );
+  //       const nombresPlataformas = respuesta.data.results.map(
+  //         (plataforma) => plataforma.name
+  //       );
+  //       console.log(
+  //         "esto es un console del llamado para plataformas de api en createGame"
+  //       );
+  //       setPlataformas(nombresPlataformas);
+  //       console.log(nombresPlataformas)
+  //     } catch (error) {
+  //       console.error("Error al obtener datos de la API de Rawg: ", error);
+  //     }
+  //   }
+  //   obtenerPlataformas();
+  // }, []);
 
+  const plataformas = [
+    "PC",
+    "PlayStation 5",
+    "PlayStation 4",
+    "Xbox One",
+    "Xbox Series S/X",
+    "Nintendo Switch",
+    "iOS",
+    "Android",
+    "Nintendo 3DS",
+    "Nintendo DS",
+    "Nintendo DSi",
+    "macOS",
+    "Linux",
+    "Xbox 360",
+    "Xbox",
+    "PlayStation 3",
+    "PlayStation 2",
+    "PlayStation",
+    "PS Vita",
+    "PSP",
+    "Wii U",
+    "Wii",
+    "GameCube",
+    "Nintendo 64",
+    "Game Boy Advance",
+    "Game Boy Color",
+    "Game Boy",
+    "SNES",
+    "NES",
+    "Classic Macintosh",
+    "Apple II",
+    "Commodore / Amiga",
+    "Atari 7800",
+    "Atari 5200",
+    "Atari 2600",
+    "Atari Flashback",
+    "Atari 8-bit",
+    "Atari ST",
+    "Atari Lynx",
+    "Atari XEGS",
+    "Genesis",
+    "SEGA Saturn",
+    "SEGA CD",
+    "SEGA 32X",
+    "SEGA Master System",
+    "Dreamcast",
+    "3DO",
+    "Jaguar",
+    "Game Gear",
+    "Neo Geo",
+  ];
   ////////
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -107,244 +161,187 @@ const CreateGame = () => {
     }
   };
   return (
-    <div>
+    <div className="createGame-page">
       <Link to="/home">
         home
         {/* <button>volver</button> */}
       </Link>
       {/* <h1>Crear juego!</h1> */}
       {/* <Pong/> */}
+      <div className="form-section-box">
+        <img
+          src="/ai-videogames-pic/photo6.png"
+          className="form-section-img"
+          alt="aca va imagen"
+        />
+        <form action="" className="main-form" onSubmit={handleSubmit}>
+          <div className="input-field-box ">
+            <label htmlFor="name">Name: </label>
+            <input
+              className="input-field"
+              type="text"
+              name="name"
+              // onChange={(event) => handleChange(event)}
+              onChange={handleChange}
+              value={input.name}
+              placeholder="Name*"
+              required
+            />
+          </div>
+          {error.name && <p className="error-form">{error.name}</p>}
+          <div className="input-field-box ">
+            <label htmlFor="released">Released: </label>
+            <input
+              // className="input-field"
+              className="date-field"
+              // className="rating-field"
 
-      <form action="" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            name="name"
-            // onChange={(event) => handleChange(event)}
-            onChange={handleChange}
-            value={input.name}
-            placeholder="Name*"
-            required
-          />
-          {error.name && <p>{error.name}</p>}
-        </div>
-        <div>
-          <label htmlFor="released">Released: </label>
-          <input
-            type="date"
-            value={input.released}
-            name="released"
-            placeholder="Released*"
-            // onChange={(e) => handleChange(e)}
-            onChange={handleChange}
-            required
-          />
-          {error.released && <p>{error.released}</p>}
-        </div>
-        <div>
-          <label htmlFor="rating">Rating: </label>
-          <input
-            type="number"
-            value={input.rating}
-            name="rating"
-            placeholder="Rating*"
-            // onChange={(e) => handleChange(e)}
-            onChange={handleChange}
-            min={0}
-            max={5}
-            required
-          />
-          {error.rating && <p>{error.rating}</p>}
-        </div>
-        <div>
-          <label htmlFor="image">Image: </label>
-          <input
-            type="url"
-            value={input.image}
-            name="image"
-            placeholder="Image*"
-            // onChange={(e) => handleChange(e)}
-            onChange={handleChange}
-            required
-          />
-          {error.image && <p>{error.image}</p>}
-        </div>
-        <div>
-          <label>Genres: </label>
+              type="date"
+              value={input.released}
+              name="released"
+              placeholder="Released*"
+              // onChange={(e) => handleChange(e)}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {error.released && <p className="error-form">{error.released}</p>}
+          <div className="input-field-box ">
+            <label htmlFor="rating">Rating: </label>
+            <input
+              className=" rating-field"
+              type="number"
+              value={input.rating}
+              name="rating"
+              placeholder="Rating*"
+              // onChange={(e) => handleChange(e)}
+              onChange={handleChange}
+              min={0}
+              max={5}
+              required
+            />
+          </div>
+          {error.rating && <p className="error-form">{error.rating}</p>}
+          <div className="input-field-box ">
+            <label htmlFor="image">Image: </label>
+            <input
+              className="input-field"
+              type="url"
+              value={input.image}
+              name="image"
+              placeholder="Image*"
+              // onChange={(e) => handleChange(e)}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {error.image && <p className="error-form">{error.image}</p>}
+          <div className="input-field-box ">
+            <label>Genres: </label>
 
-          <select
-            onChange={handleSelectGenre}
-            // onChange={(e) => handleSelectorGenres(e)}
-            required
-            value={input.genres}
-          >
-            {genres.map((el) => (
-              <option value={el.name}>{el.name}</option>
-            ))}
-          </select>
-          {error.genres && <p>{error.genres}</p>}
+            <select
+              className="genres-field"
+              onChange={handleSelectGenre}
+              // onChange={(e) => handleSelectorGenres(e)}
+              required
+              value={input.genres}
+            >
+              {genres.map((el) => (
+                <option className="input-field" value={el.name}>
+                  {el.name}
+                </option>
+              ))}
+            </select>
 
-          <ul>
-            <li>{input.genres.map((el) => el + " ,")}</li>
+            {/* {error.genres && <p>{error.genres}</p>} */}
+          </div>
+
+          <ul className="select-list">
+            <li className="input-field select-list">
+              {input.genres.map((el) => el + " -")}
+            </li>
           </ul>
-          {/* {error.genres && <p>{error.genres}</p>} */}
-        </div>
-        <label htmlFor="plataformas">Plataformas: </label>
+          {error.genres && <p className="error-form">{error.genres}</p>}
 
-        <select
-          name="plataformas"
-          value={input.platforms}
-          onChange={handleSelectPlatform}
-        >
-          {plataformas.map((plataforma) => (
-            <option key={plataforma} value={plataforma}>
-              {plataforma}
-            </option>
-          ))}
-        </select>
-        {error.platforms && <p>{error.platforms}</p>}
 
-        <ul>
-          <li>{input.platforms.map((el) => el + " ,")}</li>
-        </ul>
 
-        <div></div>
+          {/* <div className="input-field-box ">
+            <label>Platforms: </label> */}
+{/* 
+            <select
+              className="genres-field"
+              onChange={handleSelectGenre}
+              // onChange={(e) => handleSelectorGenres(e)}
+              required
+              value={input.platforms}
+            > */}
+              {/* {plataformas.map((el) => (
+                <option className="input-field" value={el}>
+                  {el}
+                </option>
+              ))}
+            </select> */}
 
-        <div>
-          <div>
+            {/* {error.genres && <p>{error.genres}</p>}
+          </div>
+          <ul className="select-list">
+            <li className=" input-field select-list">
+              {input.platforms.map((el) => el + " ,")}
+            </li>
+          </ul> */}
+
+          {error.platforms && <p className="error-form">{error.platforms}</p>}
+          <div className="input-field-box ">
+            <label htmlFor="plataformas">Plataformas: </label>
+
+            <select
+              className="genres-field"
+              name="plataformas"
+              value={input.platforms}
+              onChange={handleSelectPlatform}
+            >
+              {plataformas.map((plataforma) => (
+                <option
+                  className="input-field"
+                  key={plataforma}
+                  value={plataforma}
+                >
+                  {plataforma}
+                </option>
+              ))}
+            </select>
+
+          </div>
+            <ul className="select-list">
+              <li className="select-list input-field ">
+                {input.platforms.map((el) => el + " -")}
+              </li>
+            </ul>
+          {error.platforms && <p className="error-form">{error.platforms}</p>}
+          <div className="  textarea-box ">
             {/* <label>Description: </label> */}
+
             <textarea
+              className="input-field textarea form-control"
               value={input.description}
               // onChange={(e) => handleChange(e)}
               onChange={handleChange}
               name="description"
               placeholder="Description*"
               rows="10"
-              cols="55"
+              cols="45"
             >
               Escribe aquí tus comentarios
             </textarea>
-            {error.description && <p>{error.description}</p>}
           </div>
-        </div>
-        <button type="submit">Crear juego</button>
-      </form>
-      <form action="" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            name="name"
-            // onChange={(event) => handleChange(event)}
-            onChange={handleChange}
-            value={input.name}
-            placeholder="Name*"
-            required
-          />
-          {error.name && <p>{error.name}</p>}
-        </div>
-        <div>
-          <label htmlFor="released">Released: </label>
-          <input
-            type="date"
-            value={input.released}
-            name="released"
-            placeholder="Released*"
-            // onChange={(e) => handleChange(e)}
-            onChange={handleChange}
-            required
-          />
-          {error.released && <p>{error.released}</p>}
-        </div>
-        <div>
-          <label htmlFor="rating">Rating: </label>
-          <input
-            type="number"
-            value={input.rating}
-            name="rating"
-            placeholder="Rating*"
-            // onChange={(e) => handleChange(e)}
-            onChange={handleChange}
-            min={0}
-            max={5}
-            required
-          />
-          {error.rating && <p>{error.rating}</p>}
-        </div>
-        <div>
-          <label htmlFor="image">Image: </label>
-          <input
-            type="url"
-            value={input.image}
-            name="image"
-            placeholder="Image*"
-            // onChange={(e) => handleChange(e)}
-            onChange={handleChange}
-            required
-          />
-          {error.image && <p>{error.image}</p>}
-        </div>
-        <div>
-          <label>Genres: </label>
-
-          <select
-            onChange={handleSelectGenre}
-            // onChange={(e) => handleSelectorGenres(e)}
-            required
-            value={input.genres}
-          >
-            {genres.map((el) => (
-              <option value={el.name}>{el.name}</option>
-            ))}
-          </select>
-          {error.genres && <p>{error.genres}</p>}
-
-          <ul>
-            <li>{input.genres.map((el) => el + " ,")}</li>
-          </ul>
-          {/* {error.genres && <p>{error.genres}</p>} */}
-        </div>
-        <label htmlFor="plataformas">Plataformas: </label>
-
-        <select
-          name="plataformas"
-          value={input.platforms}
-          onChange={handleSelectPlatform}
-        >
-          {plataformas.map((plataforma) => (
-            <option key={plataforma} value={plataforma}>
-              {plataforma}
-            </option>
-          ))}
-        </select>
-        {error.platforms && <p>{error.platforms}</p>}
-
-        <ul>
-          <li>{input.platforms.map((el) => el + " ,")}</li>
-        </ul>
-
-        <div></div>
-
-        <div>
-          <div>
-            {/* <label>Description: </label> */}
-            <textarea
-              value={input.description}
-              // onChange={(e) => handleChange(e)}
-              onChange={handleChange}
-              name="description"
-              placeholder="Description*"
-              rows="10"
-              cols="55"
-            >
-              Escribe aquí tus comentarios
-            </textarea>
-            {error.description && <p>{error.description}</p>}
-          </div>
-        </div>
-        <button type="submit">Crear juego</button>
-      </form>
+          {error.description && (
+            <p className="error-form">{error.description}</p>
+          )}
+          <button className="comenzar-btn" type="submit">
+            Crear juego
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

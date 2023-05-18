@@ -9,6 +9,8 @@ import {
   GET_VIDEOGAME_BY_NAME,
   POST_VIDEOGAMES,
   GET_GENRES,
+  EDIT_VIDEOGAME,
+  DELETE_VIDEOGAME,
 } from "./types";
 
 import axios from "axios";
@@ -35,8 +37,7 @@ export const getVideogamebyName = (name) => {
         payload: data,
       });
     } catch (error) {
-      if(!name)
-      console.log("¡No hay personajes con este ID!");
+      if (!name) console.log("¡No hay personajes con este ID!");
 
       return error.message;
     }

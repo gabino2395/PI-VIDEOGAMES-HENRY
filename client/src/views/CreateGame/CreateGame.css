@@ -1,3 +1,227 @@
-form{
-  margin-top: 50px;
+form {
+  /* margin-top: 50px; */
+}
+
+.createGame-page {
+  height: 100vh;
+  width: 100vw;
+  background: #17181f;
+  border: solid white;
+  color: white;
+}
+
+form input {
+  border: none;
+  outline: none;
+  background-color: #1a1a1a;
+  background: white;
+  color: black;
+}
+
+.form-section-box {
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  display: flex;
+  /* border: solid red; */
+  justify-content: space-around;
+
+}
+
+.form-section-img {
+  height: 600px;
+}
+
+.main-form {
+  /* backdrop-filter: blur(20px); */
+  /* background-image: url('/ai-videogames-pic/photo6.png'); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: solid black;
+  border-radius: 12px;
+  height: 740px;
+  width: 550px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1em;
+  background: rgb(235, 228, 228);
+  box-shadow: 6px 2px 15px 0px rgba(1, 57, 57, 0.7);
+  overflow-y: scroll;
+}
+
+.box1 {
+  background-color: #1c1d1e;
+  padding: 10px;
+}
+
+.input-field {
+
+  background-color: inherit;
+  border-bottom: solid;
+  /* height: 20px; */
+  /* border: solid white; */
+}
+
+.input-field-box {
+  padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  /* border: solid; */
+  height: 50px;
+  /* color: white; */
+  color: black;
+}
+
+.rating-field {
+  border: solid;
+  border: solid #4c4d4f;
+
+  width: 100px;
+  outline: none;
+  border-radius: 5px;
+  padding: 7px;
+  /* color: white; */
+  margin: 3px;
+  /* border: none; */
+  /* background-color: #1a1a1a; */
+  background: rgb(235, 228, 228);
+
+}
+
+.genres-field {
+  /* border:solid; */
+  /* width: 100px; */
+  outline: none;
+  border-radius: 5px;
+  /* padding: 7px; */
+  /* color: white; */
+  /* margin: 3px; */
+  /* border: none; */
+  /* background-color: #1a1a1a; */
+  background: rgb(235, 228, 228);
+
+}
+
+.date-field {
+  border: solid #4c4d4f;
+  /* width: 100px; */
+  outline: none;
+  border-radius: 5px;
+  /* padding: 7px; */
+  /* color: white; */
+  /* margin: 3px; */
+  /* border: none; */
+  /* background-color: #1a1a1a; */
+  background: rgb(235, 228, 228);
+
+}
+
+.textarea {
+  color: black;
+  background: black;
+  outline: none;
+}
+
+.form-control {
+  /* background-color: transparent; */
+  background: var(--yellow);
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  /* padding-left: 0px !important; */
+  padding: 5px;
+  color: black;
+  display: flex;
+  align-items: center;
+  /* border:solid #4c4d4f; */
+  /* border: solid silver; */
+
+  color: white;
+}
+
+.form-control:focus {
+  border: 0px;
+  background-color: transparent;
+  border-color: red;
+  border: none;
+  background: var(--yellow);
+
+}
+
+.textarea-box {
+  height: 80px;
+  padding-bottom: 5px;
+  width: 490px;
+  /* border-bottom: solid black; */
+  display: flex;
+  justify-content: end;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.error-form {
+  color: red;
+  font-size: 12px;
+  border: none;
+}
+
+.input-error-box {
+  border: solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.comenzar-btn {
+  border: solid white;
+  padding: 12px 50px;
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+  transition: 0.6s;
+
+  /* min-width: 130px; */
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  height: 40px;
+  color: #fff;
+  /* color: black; */
+  /* padding: 5px 10px; */
+  /* font-weight: bold; */
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border-color: #6c6f6d;
+  background: black;
+  z-index: 1;
+
+
+
+}
+
+.comenzar-btn:hover {
+  /* color: black; */
+  /* border: none; */
+  /* border-color: black; */
+  /* background: white; */
+}
+
+.comenzar-btn:hover:after {
+  width: 100%;
+  left: 0;
+}
+.select-list{
+  /* border: solid; */
+  /* overflow-x: scroll; */
+  /* height: 200px; */
+  width: 
+  100%;
+  color: black;
 }
