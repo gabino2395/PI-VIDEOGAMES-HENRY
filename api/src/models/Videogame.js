@@ -10,41 +10,75 @@ module.exports = (sequelize) => {
         type: DataTypes.UUID,
         // autoIncrement: true,
         defaultValue: () => uuidv4(),
-
         allowNull: true,
         primaryKey: true,
+
+        /////eliminar desde aqui
+        unique: true,
+        validate: {
+          notEmpty: true,
+        },
       },
 
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        /////eliminar desde aqui
+        unique: true,
+        validate: {
+          notEmpty: true,
+        },
       },
       description: {
-        type: DataTypes.STRING,
         allowNull: false,
+        /////eliminar desde aqui
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: true,
+          len: {
+            args: [3, 255],
+            msg: "La description debe tener entre 3 y 255 caracteres",
+          },
+        },
       },
       platforms: {
         // type: DataTypes.STRING,
         type: DataTypes.ARRAY(DataTypes.STRING),
 
         allowNull: false,
+        /////eliminar desde aqui
+        validate: {
+          notEmpty: true,
+        },
       },
       image: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
       },
       released: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
       },
       rating: {
         type: DataTypes.FLOAT,
         allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
       },
       created: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
         allowNull: true,
+        validate: {
+          notEmpty: true,
+        },
       },
     },
 

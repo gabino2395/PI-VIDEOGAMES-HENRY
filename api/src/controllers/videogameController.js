@@ -21,8 +21,6 @@ const getApiInfo = async () => {
   return apiInfo;
 };
 
-
-
 //helpers version//////////
 
 const getInfoByName = async (game) => {
@@ -98,7 +96,7 @@ const postVideogames = async (req, res) => {
         // id: {
         //   [Op.in]: genres,
         // },
-        name:genres
+        name: genres,
       },
     });
     await newVideogame.addGenre(genreNames);
@@ -109,7 +107,6 @@ const postVideogames = async (req, res) => {
     res.status(400).send({ error: error.message });
   }
 };
-
 
 //helpers para traer todos los juegos//////////
 
@@ -160,35 +157,45 @@ const getDbInfo = async () => {
     },
   });
 };
-const getDB = async() => {
-  try{
-      let allGamesDB = (await Videogame.findAll({
-          attributes: [ 'name', 'image', 'id', 'description', 'released', 'rating', 'platforms','created' ],
-          include: {
-              model: Genre,
-              attributes: [ 'name' ],
-              through: {
-                  attributes: []
-              }
-          }
-      })).map(el => el.toJSON());
-      allGamesDB = allGamesDB.map(el => ({
-          id: el.id,
-          name: el.name,
-          image: el.image,
-          description: el.description,
-          rating: el.rating,
-          released: el.released,
-          genres: el.Genres.map(e => e.name),
-          platforms: el.platforms,
-          created:el.created
-          // website: el.website
-      }));
+const getDB = async () => {
+  try {
+    let allGamesDB = (
+      await Videogame.findAll({
+        attributes: [
+          "name",
+          "image",
+          "id",
+          "description",
+          "released",
+          "rating",
+          "platforms",
+          "created",
+        ],
+        include: {
+          model: Genre,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
+      })
+    ).map((el) => el.toJSON());
+    allGamesDB = allGamesDB.map((el) => ({
+      id: el.id,
+      name: el.name,
+      image: el.image,
+      description: el.description,
+      rating: el.rating,
+      released: el.released,
+      genres: el.Genres.map((e) => e.name),
+      platforms: el.platforms,
+      created: el.created,
+      // website: el.website
+    }));
 
-      return allGamesDB;
-  }
-  catch(e){
-      return { error: 'Not found.' };
+    return allGamesDB;
+  } catch (e) {
+    return { error: "Not found." };
   }
 };
 
@@ -203,9 +210,7 @@ const getAllVideogamesHelper = async () => {
   return infoTotal;
 };
 
-
 module.exports = {
- 
   getDB,
   getInfoId,
   getInfoByName,

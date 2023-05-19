@@ -16,9 +16,6 @@ const initialState = {
   videogames: [],
   allVideogames: [],
   genres: [],
-  // getCreatedState: [],
-  // filterByGenresState: [],
-  // genreVideogames: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
