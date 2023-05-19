@@ -9,6 +9,5 @@ FRONTEND:
 
 [
 -terminar maquetacion de loading
--terminar maquetacion de form
 =chequear que no se repita el nombre(unique)
 ]
