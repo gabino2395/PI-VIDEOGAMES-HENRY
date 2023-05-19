@@ -5,6 +5,10 @@ BACKEND:
 --agregar validaciones el back para el post como hace Jorge
 
 FRONTEND:
--chequear mapeo de nombres de plataformas con los endpoint disponibles,archivo createGame
 -revisar fonts
+
+[
 -terminar maquetacion de loading
+-terminar maquetacion de form
+=chequear que no se repita el nombre(unique)
+]

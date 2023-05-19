@@ -14,10 +14,13 @@ form input {
   border: none;
   outline: none;
   background-color: #1a1a1a;
-  background: white;
   color: black;
+  background: inherit;
+  /* color: white; */
 }
-
+input:focus{
+  /* color: red; */
+}
 .form-section-box {
   height: 100vh;
   width: 100vw;
@@ -30,14 +33,16 @@ form input {
 
 .form-section-img {
   height: 600px;
+  height: 700px;
+  width: 550px;
 }
 
 .main-form {
-  /* backdrop-filter: blur(20px); */
+  backdrop-filter: blur(13px);
   /* background-image: url('/ai-videogames-pic/photo6.png'); */
   background-repeat: no-repeat;
   background-size: cover;
-  border: solid black;
+  /* border: solid black; */
   border-radius: 12px;
   height: 740px;
   width: 550px;
@@ -46,7 +51,7 @@ form input {
   flex-direction: column;
   justify-content: space-around;
   gap: 1em;
-  background: rgb(235, 228, 228);
+  /* background: rgb(235, 228, 228); */
   box-shadow: 6px 2px 15px 0px rgba(1, 57, 57, 0.7);
   overflow-y: scroll;
 }
@@ -62,6 +67,7 @@ form input {
   border-bottom: solid;
   /* height: 20px; */
   /* border: solid white; */
+  /* color: red; */
 }
 
 .input-field-box {
@@ -70,9 +76,9 @@ form input {
   display: flex;
   justify-content: space-between;
   /* border: solid; */
-  height: 50px;
+  /* height: 50px; */
   /* color: white; */
-  color: black;
+  /* color: black; */
 }
 
 .rating-field {
@@ -88,7 +94,7 @@ form input {
   /* border: none; */
   /* background-color: #1a1a1a; */
   background: rgb(235, 228, 228);
-
+  /* background: inherit; */
 }
 
 .genres-field {
@@ -116,30 +122,38 @@ form input {
   /* border: none; */
   /* background-color: #1a1a1a; */
   background: rgb(235, 228, 228);
+  color: black;
 
+}
+.date-field::placeholder{
+  color: red;
 }
 
 .textarea {
-  color: black;
+  /* color: black; */
   background: black;
   outline: none;
+  color: white;
 }
 
 .form-control {
-  /* background-color: transparent; */
   background: var(--yellow);
+  background-color: transparent;
   border: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 5px;
   /* padding-left: 0px !important; */
   padding: 5px;
   color: black;
+
   display: flex;
   align-items: center;
   /* border:solid #4c4d4f; */
   /* border: solid silver; */
 
+  color: black;
   color: white;
+
 }
 
 .form-control:focus {
@@ -152,24 +166,27 @@ form input {
 }
 
 .textarea-box {
-  height: 80px;
+  height: 30px;
   padding-bottom: 5px;
   width: 490px;
+  color: black;
   /* border-bottom: solid black; */
   display: flex;
   justify-content: end;
   text-align: center;
   border-radius: 5px;
+  color: white;
 }
 
 .error-form {
   color: red;
-  font-size: 12px;
+  font-size: 15px;
   border: none;
+  font-weight: bold;
 }
 
 .input-error-box {
-  border: solid black;
+  border: solid white;
   display: flex;
   flex-direction: column;
 }
@@ -217,11 +234,43 @@ form input {
   width: 100%;
   left: 0;
 }
-.select-list{
+
+.select-list {
   /* border: solid; */
   /* overflow-x: scroll; */
   /* height: 200px; */
-  width: 
-  100%;
+  width:
+    100%;
   color: black;
+  color: white;
+  font: bold;
 }
+
+.contenedor-img {
+  position: relative;
+  border: none;
+}
+
+.img-fondo {
+  border-radius: 21px;
+  display: block;
+  width: 100%;
+}
+
+.form-texto {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* opacity: 0; */
+  transition: 0.5s ease;
+}
+
+::placeholder {
+  color: rgb(215, 215, 228);
+  font-weight: bold;
+  font-size: 14px;
+} 
