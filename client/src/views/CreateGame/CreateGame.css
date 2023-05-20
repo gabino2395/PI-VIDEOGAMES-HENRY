@@ -5,9 +5,12 @@ form {
 .createGame-page {
   height: 100vh;
   width: 100vw;
-  background: #17181f;
-  border: solid white;
+  /* background: #17181f; */
+  /* border: solid white; */
   color: white;
+  background-image: url("../../../public/ai-videogames-pic/photo13.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 form input {
@@ -18,9 +21,11 @@ form input {
   background: inherit;
   /* color: white; */
 }
-input:focus{
+
+input:focus {
   /* color: red; */
 }
+
 .form-section-box {
   height: 100vh;
   width: 100vw;
@@ -28,8 +33,10 @@ input:focus{
   display: flex;
   /* border: solid red; */
   justify-content: space-around;
+  /* border: solid red; */
 
 }
+
 
 .form-section-img {
   height: 600px;
@@ -37,8 +44,25 @@ input:focus{
   width: 550px;
 }
 
+.img-left {
+  height: 550px;
+  /* border: solid; */
+}
+
+.img-left-section{
+  display: flex;
+  flex-direction: column;
+  /* border: solid red; */
+  justify-content: space-between;
+  height: 700px;
+}
+.img-left-section h1{
+  font-size: 40px;
+  line-break: loose;
+  /* line-height: 30px; */
+}
 .main-form {
-  backdrop-filter: blur(13px);
+  backdrop-filter: blur(5px);
   /* background-image: url('/ai-videogames-pic/photo6.png'); */
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,7 +76,7 @@ input:focus{
   justify-content: space-around;
   gap: 1em;
   /* background: rgb(235, 228, 228); */
-  box-shadow: 6px 2px 15px 0px rgba(1, 57, 57, 0.7);
+  box-shadow: 6px 2px 15px 5px rgba(1, 57, 57, 1.7);
   overflow-y: scroll;
 }
 
@@ -64,7 +88,7 @@ input:focus{
 .input-field {
 
   background-color: inherit;
-  border-bottom: solid;
+  border-bottom: rgb(203, 203, 203) solid;
   /* height: 20px; */
   /* border: solid white; */
   /* color: red; */
@@ -125,7 +149,8 @@ input:focus{
   color: black;
 
 }
-.date-field::placeholder{
+
+.date-field::placeholder {
   color: red;
 }
 
@@ -273,4 +298,4 @@ input:focus{
   color: rgb(215, 215, 228);
   font-weight: bold;
   font-size: 14px;
-} 
+}

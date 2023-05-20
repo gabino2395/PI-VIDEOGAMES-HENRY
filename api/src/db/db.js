@@ -43,8 +43,8 @@ const modelDefiners = [];
 const { Videogame, Genre, User } = sequelize.models;
 
 //N:N
-User.belongsToMany(Videogame, { through: "favorites" }); // se crea la tabla intermedia favorites
-Videogame.belongsToMany(User, { through: "favorites" });
+// User.belongsToMany(Videogame, { through: "favorites" }); // se crea la tabla intermedia favorites
+// Videogame.belongsToMany(User, { through: "favorites" });
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);

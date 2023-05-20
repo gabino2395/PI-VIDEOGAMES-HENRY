@@ -1,31 +1,39 @@
 import React from "react";
-import { Link,NavLink } from "react-router-dom";
-import "./Nav.css"
+import { Link, NavLink } from "react-router-dom";
+import "./Nav.css";
 const Nav = () => {
   return (
-     <>
-    <header>
-      <Link to={'/'} className="logo-box"> Videogames</Link>
-      <nav>
-        <ul>
-          <li>
-            <Link to={'/home'} className="font-3">Landing</Link>
-            <Link to={'/createGame'} className="font-3">Create</Link>
-            <Link>About</Link>
-          </li>
-        </ul>
-      </nav>
-      <nav className="logo-box">
-        <ul >
-          <li>
-            <Link>github</Link>
-            <Link>linkedin</Link>
-            <Link>ingresar</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
-     {/* <header className="header">
+    <>
+      <header>
+        <Link to={"/"} className="logo-box">
+          {" "}
+          Videogames
+        </Link>
+
+        <nav>
+          <ul>
+            <li>
+              <Link to={"/home"} className="font-3 navs-link">
+                Landing
+              </Link>
+              <Link to={"/createGame"} className="font-3 navs-link">
+                Create
+              </Link>
+              <Link className="font-3 navs-link">About</Link>
+            </li>
+          </ul>
+        </nav>
+        <nav className="logo-box">
+          <ul>
+            <li>
+              <Link>github</Link>
+              <Link>linkedin</Link>
+              <Link className="navs-link">ingresar</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      {/* <header className="header">
        <div>
          <Link to="/" className="logo">
            Salitre
@@ -68,8 +76,8 @@ const Nav = () => {
         
        </ul>
      </header> */}
-     {/* <section className="banner"></section> */}
-   </>
+      {/* <section className="banner"></section> */}
+    </>
   );
 };
 

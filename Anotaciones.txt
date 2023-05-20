@@ -3,11 +3,7 @@ BACKEND:
 
 -refactorizar codigo rutas en backend
 --agregar validaciones el back para el post como hace Jorge
+-- agregar modelo user, implementar probar
+
 
 FRONTEND:
--revisar fonts
-
-[
--terminar maquetacion de loading
-=chequear que no se repita el nombre(unique)
-]

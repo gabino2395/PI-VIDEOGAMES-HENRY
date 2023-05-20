@@ -168,13 +168,19 @@ const CreateGame = () => {
       </Link>
       {/* <h1>Crear juego!</h1> */}
       {/* <Pong/> */}
-      
+
       <div className="form-section-box">
-      <img
-            src="/ai-videogames-pic/photo5.png"
-            className="form-section-img "
+        <div className="img-left-section">
+          <h1>
+            Become a hero.. <br />
+            Create your game
+          </h1>
+          <img
+            src="/ai-videogames-pic/photo10.png"
+            className="form-section-img img-left"
             alt="aca va imagen"
           />
+        </div>
         <div className="contenedor-img">
           <img
             src="/ai-videogames-pic/photo1.png"

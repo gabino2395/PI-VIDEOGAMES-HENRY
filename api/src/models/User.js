@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define("user", {
+  sequelize.define("User", {
     id: {
       //ID autoincrementar, no Null y llave primaria
       type: DataTypes.INTEGER,
@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
 
 
 
-const { DataTypes } = require('sequelize');
+// const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {

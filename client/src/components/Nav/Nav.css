@@ -1,7 +1,7 @@
 header {
   display: flex;
   width: 100vw;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   position: fixed;
   /* position: absolute; */
@@ -9,7 +9,7 @@ header {
   top: 0;
   color: white;
   padding: 5px;
-  border: solid;
+  /* border: solid; */
   margin-bottom: 15px;
 }
 
@@ -22,6 +22,17 @@ nav {
   width: 400px;
   justify-content: end;
 
+}
+.navs-link{
+  transition: 0.4s ease-in-out;
+  /* transition: ease-in-out; */
+}
+.navs-link:hover {
+  cursor: pointer;
+  /* color: black; */
+  transition: 0.5s;
+  background: #f4f7f9;
+  background: #4d4d4f;
 }
 
 li {
@@ -37,30 +48,33 @@ a {
   font-size: 14px;
   color: white;
   display: inline-block;
+  padding: 8px;
+  border-radius: 3px;
+  /* border: solid; */
 }
-.logo-box{
+
+.logo-box {
   width: 100%;
 }
 
 
 /*///////////////
   */
-  .cart-icon {
-    width: 10px;
-    height: 1px;
-    position: relative;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    cursor: pointer;
-    z-index: 1;
-    /* background-color: #000;
+.cart-icon {
+  width: 10px;
+  height: 1px;
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+  /* background-color: #000;
     color: #fff; */
-    font-size: 15px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    padding-right: 50px;
+  font-size: 15px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  padding-right: 50px;
 }
 
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap'); */
-

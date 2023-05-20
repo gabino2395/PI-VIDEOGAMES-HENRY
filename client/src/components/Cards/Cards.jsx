@@ -31,7 +31,7 @@ const Cards = () => {
   useEffect(() => {
     dispatch(getVideogames());
     setLoading(false);
-    console.log('cuantas veces renderizas desde cards')
+    console.log("cuantas veces renderizas desde cards");
   }, []);
 
   const handleClick = (e) => {
@@ -41,32 +41,53 @@ const Cards = () => {
   return (
     <>
       <div className="">
-        {loading ?  <h1 className="cargando">cargando</h1>:
-       
-      <>
-        <Paginated
-          gamesPerPage={gamesPerPage}
-          allGames={allGames.length}
-          paginated={paginated}
-        />
-       
-        <div className="cards-container">
-          {allGames &&
-            currentGames.map((el) => {
-              return (
-                <Card
-                  rating={el.rating}
-                  id={el.id}
-                  key={el.name}
-                  name={el.name}
-                  image={el.image}
-                  genres={el.genres?.map((el) => el)}
-                />
-              );
-            })}
+        {loading ? (
+          <>
+          
+          <div className="card   skeleton">
+            <div className="card-details ">
+            <div class="skeleton skeleton-text"></div>
+              {/* <h3 className="card-detail-name">namnamea</h3> */}
+              <div class="skeleton skeleton-text text-skeleton"></div>
+              <div class="skeleton skeleton-text"></div>
+            </div>
+            <div className="skeleton img-skeleton" width="200px" height="250px"></div>
+          </div>
+          <div className="card card2  skeleton">
+          <div className="card-details ">
+          <div class="skeleton skeleton-text"></div>
+            {/* <h3 className="card-detail-name">namnamea</h3> */}
+            <div class="skeleton skeleton-text text-skeleton"></div>
+            <div class="skeleton skeleton-text"></div>
+          </div>
+          <div className="skeleton img-skeleton" width="200px" height="250px"></div>
         </div>
-      </>
-}
+          </>
+        ) : (
+          <>
+            <Paginated
+              gamesPerPage={gamesPerPage}
+              allGames={allGames.length}
+              paginated={paginated}
+            />
+
+            <div className="cards-container">
+              {allGames &&
+                currentGames.map((el) => {
+                  return (
+                    <Card
+                      rating={el.rating}
+                      id={el.id}
+                      key={el.name}
+                      name={el.name}
+                      image={el.image}
+                      genres={el.genres?.map((el) => el)}
+                    />
+                  );
+                })}
+            </div>
+          </>
+        )}
       </div>
     </>
   );
