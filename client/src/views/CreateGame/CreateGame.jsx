@@ -87,6 +87,7 @@ const CreateGame = () => {
   ////////
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const genres = useSelector((input) => input.genres);
   const videogames = useSelector((input) => input.videogames);
   const [error, setError] = useState({});
@@ -99,6 +100,59 @@ const CreateGame = () => {
     genres: [],
     rating: "",
   });
+  const [disable, setDisable] = useState(false);
+  function validate(input) {
+    let error = {};
+
+    if (!input.name) {
+      if (typeof input.name === "string") {
+        error.name = "The entered value is not valid.";
+      }
+      error.name = "This field is required.";
+    }
+    if (
+      !input.image.includes("https://" || "http://") ||
+      !input.image.includes(".jpg" || ".png" || ".gif")
+    ) {
+      error.image = "Enter a valid URL (.jpg, .png, .gif)";
+    }
+    if (
+      !input.description ||
+      input.description.length < 30 ||
+      input.description.length > 200
+    ) {
+      error.description =
+        "Please, enter a minimum description of 30 characters.";
+    }
+    if (!input.released) {
+      if (
+        !/^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/.test(
+          input.released
+        )
+      ) {
+        error.released = "Error.";
+      }
+    }
+    if (!input.rating || input.rating < 0 || input.rating > 5) {
+      error.rating = "The rating must be < 0 & > 5...";
+    }
+    // if (
+    //   !input.website.includes("https://" || "http://") ||
+    //   !input.website.includes(".com" || ".ar")
+    // ) {
+    //   error.website = "Enter a Valid URL (.com, .ar)";
+    // }
+    if (!input.genres.length) {
+      error.genres = "This field is required.";
+    }
+    if (!input.platforms.length) {
+      error.platforms = "This field is required.";
+    }
+    setDisable(true);
+    if (Object.values(error).length === 0) setDisable(false);
+    return error;
+  }
+
   useEffect(() => {
     dispatch(getGenres());
   }, []);
@@ -142,11 +196,16 @@ const CreateGame = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setError(validate(input));
+    if (error) console.log("hola");
     const errorSave = validate(input);
+
     if (Object.values(errorSave).length !== 0) {
       alert("Please, fullfil the required camps.");
     } else {
+      console.log("dame algo");
+      setDisable(false);
       dispatch(postVideogames(input));
+
       alert("personaje creado");
       setInput({
         name: "",
@@ -157,8 +216,18 @@ const CreateGame = () => {
         genres: [],
         rating: Number,
       });
+      // setdisable(true);
+
       navigate("/");
     }
+  };
+
+  const buttonDisable = (activityData, errors) => {
+    let disable = false;
+    if (activityData.country.length < 1) disable = true;
+    if (!Object.values(activityData).every((value) => value)) disable = true;
+    if (!Object.values(errors).every((value) => !value)) disable = true;
+    return disable;
   };
   return (
     <div className="createGame-page">
@@ -327,9 +396,13 @@ const CreateGame = () => {
             {error.description && (
               <p className="error-form">{error.description}</p>
             )}
-            <button className="comenzar-btn" type="submit">
-              Crear juego
-            </button>
+            {disable ? (
+              "error"
+            ) : (
+              <button className="comenzar-btn disable" type="submit" disabledd>
+                Crear juego
+              </button>
+            )}
           </form>
         </div>
       </div>

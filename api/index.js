@@ -17,15 +17,15 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db/db.js');
+const server = require("./src/app.js");
+const { conn } = require("./src/db/db.js");
 
 // // Syncing all the models at once.
 // conn.sync({ force: true }).then(() => {
 //   server.listen(3001,async () => {
 //     console.log('server listening at 3001 and DB connected'); // eslint-disable-line no-console
 //   });
-// }); 
+// });
 
 const PORT = 3001;
 server.listen(PORT, async () => {
@@ -33,8 +33,7 @@ server.listen(PORT, async () => {
   // console.log("::::", conn.models);
   await conn.sync({ force: false }); // sincroniza todos los models, todas las tablas
   // await conn.sync({ alter: true }); // sincroniza todos los models, todas las tablas
-
-}); 
+});
 
 // { force: true } -> RESET ->  DROP (delete) a todas las TABLAS y vuelve a crear segun su config
 

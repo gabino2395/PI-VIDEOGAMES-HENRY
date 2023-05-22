@@ -12,14 +12,18 @@ form {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+:disabled{
+  color: #a0a0a0;
+  border: #a0a0a0;
+  cursor: alias;
+}
 form input {
   border: none;
   outline: none;
   background-color: #1a1a1a;
   color: black;
   background: inherit;
-  /* color: white; */
+  color: white;
 }
 
 input:focus {
@@ -119,6 +123,7 @@ input:focus {
   /* background-color: #1a1a1a; */
   background: rgb(235, 228, 228);
   /* background: inherit; */
+  color: black;
 }
 
 .genres-field {
@@ -211,7 +216,7 @@ input:focus {
 }
 
 .input-error-box {
-  border: solid white;
+  /* border: solid white; */
   display: flex;
   flex-direction: column;
 }

@@ -7,3 +7,5 @@ BACKEND:
 
 
 FRONTEND:
+chequear boton disable,
+chequear loader de cards

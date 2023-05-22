@@ -31,7 +31,6 @@ const Cards = () => {
   useEffect(() => {
     dispatch(getVideogames());
     setLoading(false);
-    console.log("cuantas veces renderizas desde cards");
   }, []);
 
   const handleClick = (e) => {
@@ -76,6 +75,7 @@ const Cards = () => {
                 currentGames.map((el) => {
                   return (
                     <Card
+                    loading={loading}
                       rating={el.rating}
                       id={el.id}
                       key={el.name}

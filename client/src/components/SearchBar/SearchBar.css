@@ -56,7 +56,7 @@
   border: solid black;
 }
 .input-error-box{
-  border: solid;
+  /* border: solid; */
   /* height: 100px; */
   display: flex;
   flex-direction: column;

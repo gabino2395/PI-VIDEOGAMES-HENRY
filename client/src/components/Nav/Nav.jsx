@@ -7,7 +7,11 @@ const Nav = () => {
       <header>
         <Link to={"/"} className="logo-box">
           {" "}
-          Videogames
+          {/* <img className="logo" src="/logo-icon2.png" alt="" /> */}
+          {/* <img className="logo" src="/loco.svg" alt="" /> */}
+          <span class="material-symbols-outlined logo">
+            keyboard_double_arrow_up
+          </span>
         </Link>
 
         <nav>
@@ -26,9 +30,9 @@ const Nav = () => {
         <nav className="logo-box">
           <ul>
             <li>
-              <Link>github</Link>
-              <Link>linkedin</Link>
-              <Link className="navs-link">ingresar</Link>
+              {/* <Link>github</Link>
+              <Link>linkedin</Link> */}
+              <Link className="navs-link">Login</Link>
             </li>
           </ul>
         </nav>

@@ -76,5 +76,21 @@ a {
   margin-bottom: 20px;
   padding-right: 50px;
 }
-
+.logo{
+  /* height: 70px; */
+  color: white;
+  border:solid;
+  border-radius: 19px;
+  padding: 4px;
+  transition: 0.3s;
+  /* color: red; */
+  /* background-color: white; */
+  /* border-color:white; */
+}
+.logo:hover{
+  /* border-color: #4d4d4f; */
+  color: rgb(106, 24, 24);
+  background: #4d4d4f;
+background: inherit;
+}
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap'); */

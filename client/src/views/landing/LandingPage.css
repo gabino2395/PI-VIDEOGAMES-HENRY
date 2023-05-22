@@ -7,7 +7,14 @@
   text-align: center;
 
 }
+.landing-title{
+  font-size: 2.5rem;
+  font-weight: bold;
 
+}
+.landing-p{
+  line-height: 30px;
+}
 .video-section-box {
   display: flex;
   flex-direction: column;
@@ -41,8 +48,9 @@ video {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  border: solid white;
+width: 1400px;
+  /* border: solid white; */
+  backdrop-filter: blur(10px);
   position: relative;
 
 }

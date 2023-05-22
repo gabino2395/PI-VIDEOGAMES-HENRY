@@ -13,7 +13,11 @@ export default function validate(input) {
   ) {
     error.image = "Enter a valid URL (.jpg, .png, .gif)";
   }
-  if (!input.description || input.description.length < 30 ||input.description.length > 200) {
+  if (
+    !input.description ||
+    input.description.length < 30 ||
+    input.description.length > 200
+  ) {
     error.description = "Please, enter a minimum description of 30 characters.";
   }
   if (!input.released) {
@@ -38,5 +42,6 @@ export default function validate(input) {
   if (!input.platforms.length) {
     error.platforms = "This field is required.";
   }
+  setDisable(true);
   return error;
 }

@@ -16,9 +16,17 @@
 .filter-card-img {
   height: 500px;
   border-radius: 9px;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 7px 7px 15px 7px rgba(1, 47, 57, 1.7);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(164, 160, 160, 0.75);
+  box-shadow: 10px 10px 15px 0px rgba(220, 215, 215, 0.75);
+  box-shadow: 1px 13px 16px 0px rgba(245,240,240,0.75);
+  box-shadow: 4px -4px 16px 0px rgba(228, 224, 224, 0.75);
+
+
+
+
 }
 .filter-title{
   color:  #dfe2e4;

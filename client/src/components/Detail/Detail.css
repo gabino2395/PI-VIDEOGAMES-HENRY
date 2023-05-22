@@ -1,6 +1,9 @@
 .detail-box {
 
   background: #17181f;
+  background-image: url("../../../public/ai-videogames-pic/photo13.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,10 +56,13 @@
   /* border: #17181f; */
 }
 .detail-img2{
-  height: 380px;
-  width: 300px;
-  border: solid rgb(65, 64, 64);
+  height: 360px;
+  width: 280px;
+  border-radius: 9px;
+  /* border: solid rgb(65, 64, 64); */
+  box-shadow: -1px 0px 20px -1px rgba(0,0,0,0.75);
 }
+
 .items-detail-box {
   display: flex;
   align-items: center;
@@ -153,11 +159,11 @@
 
 
 
-.box {
+/* .box {
   width: 100px;
   height: 80px;
   
-}
+} */
 
 
 

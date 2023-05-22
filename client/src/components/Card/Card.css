@@ -12,6 +12,9 @@ border-radius: 30px;
 /* -webkit-box-shadow: 4px 22px 41px 0px rgba(0,0,0,0.75); */
 /* -moz-box-shadow: 4px 22px 41px 0px rgba(0,0,0,0.75); */
 box-shadow: 14px 11px 10px 3px rgba(0,0,0,0.37);
+box-shadow: 11px -7px 12px 0px rgba(228, 224, 224, 0.75);
+box-shadow: 7px 7px 15px 7px rgba(1, 47, 57, 1.7);
+
 transition: 0.3s;
 
 }

@@ -148,7 +148,7 @@ const Catalog = () => {
                 <p className="filter-title">{stateCard}</p>
                 <img
                   className="filter-card-img"
-                  src="/ai-videogames-pic/photo2.png
+                  src="/ai-videogames-pic/photo7.png
 "
                   alt=""
                 />
