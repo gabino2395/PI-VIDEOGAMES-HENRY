@@ -2,10 +2,9 @@
 BACKEND:
 
 -refactorizar codigo rutas en backend
---agregar validaciones el back para el post como hace Jorge
+
 -- agregar modelo user, implementar probar
 
 
 FRONTEND:
-chequear boton disable,
 chequear loader de cards

@@ -1,50 +1,9 @@
 const axios = require("axios");
 const { Videogame, Genre } = require("../db/db");
 const { API_KEY } = process.env;
-// const API_KEY='4b5ef4dd9c8c4047ae61e0a237af035e'
-// const API_KEY='968e8c96554f4a3691dd2632e72dac14'
 
-// const { Op } = require("sequelize");
-const getApiInfo = async () => {
-  const apiUrl = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);
-  const apiInfo = await apiUrl.data.map((el) => {
-    return {
-      id: el.id,
-      image: el.background_image,
-      name: el.name,
-      rating: el.rating,
-      genres: el.genres.map((el) => el.name),
-      platforms: el.platforms.map((el) => el.platform.name),
-    };
-  });
-
-  return apiInfo;
-};
-
-//helpers version//////////
-
-const getInfoByName = async (game) => {
-  try {
-    let getGamesNames = await axios.get(
-      `https://api.rawg.io/api/games?search=${game}&key=${API_KEY}`
-    );
-    getGamesNames = getGamesNames.data.results.map((el) => {
-      return {
-        id: el.id,
-        image: el.background_image
-          ? el.background_image
-          : "https://w0.peakpx.com/wallpaper/588/185/HD-wallpaper-404-not-found-red-sign-red-brickwall-404-not-found-red-blank-display-404-not-found-neon-symbol.jpg",
-        name: el.name,
-        genres: el.genres.map((el) => el.name),
-      };
-    });
-
-    return getGamesNames;
-  } catch (e) {
-    return { error: "Not found." };
-  }
-};
-
+///
+//funcion para traer por id
 const getInfoId = async (id) => {
   try {
     let getGameById = await axios.get(
@@ -70,46 +29,8 @@ const getInfoId = async (id) => {
     return "Not found.";
   }
 };
-const postVideogames = async (req, res) => {
-  const {
-    name,
-    description,
-    platforms,
-    released,
-    created,
-    rating,
-    image,
-    genres,
-  } = req.body;
-  try {
-    const newVideogame = await Videogame.create({
-      name,
-      description,
-      platforms,
-      released,
-      created,
-      rating,
-      image,
-    });
-    const genreNames = await Genre.findAll({
-      where: {
-        // id: {
-        //   [Op.in]: genres,
-        // },
-        name: genres,
-      },
-    });
-    await newVideogame.addGenre(genreNames);
-    res.status(200).json({
-      message: "Videogame created successfully",
-    });
-  } catch (error) {
-    res.status(400).send({ error: error.message });
-  }
-};
 
-//helpers para traer todos los juegos//////////
-
+/// funcion para traer todos los los juegos de la api
 const getInfo = async () => {
   let i = 1;
   let listGames = [];
@@ -143,20 +64,7 @@ const getInfo = async () => {
 
   return allGames;
 };
-
-const getDbInfo = async () => {
-  return await Videogame.findAll({
-    include: {
-      model: Genre,
-      attributes: ["name"],
-      // attributes: '',
-
-      through: {
-        attributes: [],
-      },
-    },
-  });
-};
+//funcion para traer los juegos  solo de la DB
 const getDB = async () => {
   try {
     let allGamesDB = (
@@ -198,7 +106,7 @@ const getDB = async () => {
     return { error: "Not found." };
   }
 };
-
+// funcion para traer a todos, de la api y de la DB
 const getAllVideogamesHelper = async () => {
   // const apiInfo = await getApiInfo();
   const apiInfo = await getInfo();
@@ -213,9 +121,5 @@ const getAllVideogamesHelper = async () => {
 module.exports = {
   getDB,
   getInfoId,
-  getInfoByName,
   getAllVideogamesHelper,
-  getApiInfo,
-  getDbInfo,
-  postVideogames,
 };

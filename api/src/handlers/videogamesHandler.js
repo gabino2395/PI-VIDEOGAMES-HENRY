@@ -1,9 +1,7 @@
 const {
-  getAllVideogames,
   getDB,
   getInfoId,
   getAllVideogamesHelper,
-  getDbInfo,
 } = require("../controllers/videogameController");
 const { Genre, Videogame } = require("../db/db");
 
@@ -55,28 +53,40 @@ const postVideogames = async (req, res) => {
     name,
     description,
     platforms,
-    realeased,
+    released,
     created,
     rating,
-    genres,
     image,
+    genres,
   } = req.body;
   try {
+    if (
+      !name ||
+      !description ||
+      !platforms ||
+      !released ||
+      !created ||
+      !rating ||
+      !image ||
+      !genres
+    ) {
+      return res.status(400).json("faltan datos para crear un juego");
+    }
     const newVideogame = await Videogame.create({
       name,
       description,
       platforms,
-      realeased,
+      released,
       created,
       rating,
       image,
     });
     const genreNames = await Genre.findAll({
       where: {
-        name: genres,
         // id: {
         //   [Op.in]: genres,
         // },
+        name: genres,
       },
     });
     await newVideogame.addGenre(genreNames);
@@ -88,87 +98,76 @@ const postVideogames = async (req, res) => {
   }
 };
 
-const postVideogamesJson = async (req, res) => {
-  let {
+const updateVideogame = async (req, res) => {
+  const {
     name,
-    image,
     description,
-    released,
-    rating,
-    genres,
     platforms,
-    website,
+    released,
+    created,
+    rating,
+    image,
+    genres,
   } = req.body;
+  const { id } = req.params;
 
   try {
-    let createVideogame = await Videogame.create({
-      name,
-      image,
-      description,
-      released,
-      rating,
-      platforms,
-      website,
-    });
+    if (
+      !name ||
+      !description ||
+      !platforms ||
+      !released ||
+      !created ||
+      !rating ||
+      !image ||
+      !genres
+    ) {
+      return res.status(400).json("Faltan datos para actualizar el juego");
+    }
 
-    let genreByDb = await Promise.all(
-      genres.map(async (el) => {
-        return (
-          await Genre.findOrCreate({
-            where: {
-              name: el,
-            },
-          })
-        )[0].dataValues.id;
-      })
+    const updatedVideogame = await Videogame.update(
+      {
+        name,
+        description,
+        platforms,
+        released,
+        created,
+        rating,
+        image,
+        genres
+
+      },
+      {
+        where: { id },
+      }
     );
 
-    await createVideogame.addGenre(genreByDb);
+    if (updatedVideogame[0] === 0) {
+      return res.status(404).json("No se encontró el videojuego");
+    }
 
-    let gameCreated = (
-      await Videogame.findOne({
-        attributes: [
-          "name",
-          "image",
-          "id",
-          "description",
-          "released",
-          "rating",
-          "platforms",
-        ],
-        where: {
-          name: name,
-        },
-        include: {
-          model: Genre,
-          attributes: ["name"],
-          through: {
-            attributes: [],
-          },
-        },
-      })
-    ).toJSON();
-    gameCreated = {
-      name: gameCreated.name,
-      image: gameCreated.image,
-      id: gameCreated.id,
-      description: gameCreated.description,
-      released: gameCreated.released,
-      rating: gameCreated.rating,
-      platforms: gameCreated.platforms,
-      genres: gameCreated.Genres.map((el) => el.name),
-    };
-    res.status(200).json(gameCreated);
-  } catch (e) {
-    res
-      .status(404)
-      .send("Ups! Sorry, there was an error creating the videogame :(");
+    const genreNames = await Genre.findAll({
+      where: {
+        name: genres,
+      },
+    });
+
+    const videogame = await Videogame.findByPk(id);
+    await videogame.setGenres(genreNames);
+
+    res.status(200).json({
+      message: "Videojuego actualizado exitosamente",
+    });
+  } catch (error) {
+    res.status(400).send({ error: error.message });
   }
 };
+
+///
 
 module.exports = {
   getVideogamesHandler,
   getGameById,
   postVideogames,
-  postVideogamesJson
+  updateVideogame
 };
