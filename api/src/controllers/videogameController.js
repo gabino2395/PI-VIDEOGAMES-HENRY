@@ -35,7 +35,7 @@ const getInfo = async () => {
   let i = 1;
   let listGames = [];
 
-  while (i < 9) {
+  while (i < 15) {
     let getApi = axios.get(
       `https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`
     );

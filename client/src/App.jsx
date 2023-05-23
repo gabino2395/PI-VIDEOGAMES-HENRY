@@ -8,6 +8,7 @@ import CreateGame from "./views/CreateGame/CreateGame";
 import Nav from "./components/Nav/Nav";
 import HeroSection from "./views/landing/HeroSection";
 import Pong from "./components/Pong/Pong";
+import EditGame from "./views/EditGame/EditGame";
 function App() {
   // const [count, setCount] = useState(0);
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         {/* <Route path="/home" element={<Home />} /> */}
         <Route path="/createGame" element={<CreateGame />} />
+        <Route path="/editGame/:id" element={<EditGame />} />
 
       </Routes>
     </>

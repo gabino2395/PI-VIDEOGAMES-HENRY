@@ -5,6 +5,7 @@ const {
 } = require("../controllers/videogameController");
 const { Genre, Videogame } = require("../db/db");
 
+//funcion para traer juegos y por nombre si hay query
 const getVideogamesHandler = async (req, res) => {
   const { name } = req.query;
   try {
@@ -26,7 +27,7 @@ const getVideogamesHandler = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
-
+//funcion para traer por Id
 const getGameById = async (req, res) => {
   const { id } = req.params;
 
@@ -48,6 +49,7 @@ const getGameById = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+//funcion para crear un juego
 const postVideogames = async (req, res) => {
   const {
     name,
@@ -60,18 +62,18 @@ const postVideogames = async (req, res) => {
     genres,
   } = req.body;
   try {
-    if (
-      !name ||
-      !description ||
-      !platforms ||
-      !released ||
-      !created ||
-      !rating ||
-      !image ||
-      !genres
-    ) {
-      return res.status(400).json("faltan datos para crear un juego");
-    }
+    // if (
+    //   !name ||
+    //   !description ||
+    //   !platforms ||
+    //   !released ||
+    //   !created ||
+    //   !rating ||
+    //   !image ||
+    //   !genres
+    // ) {
+    //   return res.status(400).json("el error esta aqui");
+    // }
     const newVideogame = await Videogame.create({
       name,
       description,
@@ -97,7 +99,7 @@ const postVideogames = async (req, res) => {
     res.status(400).send({ error: error.message });
   }
 };
-
+//funcion para modificar un juego creado previamente
 const updateVideogame = async (req, res) => {
   const {
     name,
@@ -112,18 +114,18 @@ const updateVideogame = async (req, res) => {
   const { id } = req.params;
 
   try {
-    if (
-      !name ||
-      !description ||
-      !platforms ||
-      !released ||
-      !created ||
-      !rating ||
-      !image ||
-      !genres
-    ) {
-      return res.status(400).json("Faltan datos para actualizar el juego");
-    }
+    // if (
+    //   !name ||
+    //   !description ||
+    //   !platforms ||
+    //   !released ||
+    //   !created ||
+    //   !rating ||
+    //   !image ||
+    //   !genres
+    // ) {
+    //   return res.status(400).json("Faltan datos para actualizar el juego");
+    // }
 
     const updatedVideogame = await Videogame.update(
       {
@@ -134,8 +136,7 @@ const updateVideogame = async (req, res) => {
         created,
         rating,
         image,
-        genres
-
+        genres,
       },
       {
         where: { id },
@@ -159,9 +160,24 @@ const updateVideogame = async (req, res) => {
       message: "Videojuego actualizado exitosamente",
     });
   } catch (error) {
+    console.log('claramente no se puede editar esto papa')
     res.status(400).send({ error: error.message });
   }
 };
+//funcion para eliminar un juego creado previamente
+const deleteVideogame = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Videogame.destroy({ where: { id } });
+
+    res.json({
+      message: "Juego  eliminado correctamente!",
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 ///
 
@@ -169,5 +185,6 @@ module.exports = {
   getVideogamesHandler,
   getGameById,
   postVideogames,
-  updateVideogame
+  updateVideogame,
+  deleteVideogame,
 };

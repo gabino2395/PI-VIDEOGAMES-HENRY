@@ -36,6 +36,7 @@ const Cards = () => {
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(getVideogames);
+    
   };
   return (
     <>
@@ -82,6 +83,8 @@ const Cards = () => {
                       name={el.name}
                       image={el.image}
                       genres={el.genres?.map((el) => el)}
+                      // created={el.created?.created}
+                      created={el.created}
                     />
                   );
                 })}

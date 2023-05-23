@@ -10,6 +10,8 @@ import {
   GET_VIDEOGAME_BY_NAME,
   POST_VIDEOGAMES,
   GET_GENRES,
+  DELETE_VIDEOGAME,
+  EDIT_VIDEOGAME,
 } from "./types";
 
 const initialState = {
@@ -41,7 +43,6 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         videogames: games.filter((el) => el.genres == payload),
       };
-
     case ORDER:
       const gamesOrdered = [...state.videogames];
 
@@ -67,7 +68,6 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         videogames: allGames.filter((el) => !el.created),
       };
-
     case POST_VIDEOGAMES:
       return {
         ...state,
@@ -77,35 +77,22 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         genres: payload,
       };
-    // case FILTER_CREATED:
-    //   const gamesCreatedFilter2 = state.allVideogames;
-    //   const gamesCreatedFilter = [...state.videogames];
-    //   const gamesCreated =
-    //     payload === "created" || payload !== "api"
-
-    //       ? gamesCreatedFilter.filter((el) => el.created)
-
-    //       : gamesCreatedFilter2.filter((el) => !el.created);
-    //   return {
-    //     ...state,
-    //     videogames:
-    //       payload === "All" ? [...state.allVideogames] : gamesCreated,
-    //   };
-
     case GET_VIDEOGAME_BY_NAME:
       return {
         ...state,
         videogames: payload,
         // allVideogames: payload,
       };
-
-    // case REMOVE_FAV:
-    //   return {
-    //     ...state,
-    //     myFavorites: payload,
-    //     allCharactersFav: payload,
-    //   };
-
+    case EDIT_VIDEOGAME:
+      return {
+        ...state,
+        videogames: payload,
+      };
+    case DELETE_VIDEOGAME:
+      return {
+        ...state,
+        videogames: payload,
+      };
     default:
       return { ...state };
   }

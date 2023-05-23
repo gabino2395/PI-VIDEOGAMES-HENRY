@@ -1,10 +1,10 @@
 
 BACKEND:
 
--refactorizar codigo rutas en backend
-
+- agregar metodo delete
 -- agregar modelo user, implementar probar
 
 
 FRONTEND:
 chequear loader de cards
+-hacer front de put y delete

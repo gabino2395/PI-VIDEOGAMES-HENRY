@@ -73,6 +73,33 @@ export const postVideogames = (payload) => {
   };
 };
 
+export const updateVideogame = async (id,game) => {
+  return async (dispatch) => {
+    try {
+        const { data } = await axios.put(`${endpoint}/${id}`, game)
+        return dispatch({
+            type: EDIT_VIDEOGAME,
+            payload: data
+        })
+    } catch (error) {
+        return error.message;
+    }
+}
+};
+
+export const deleteVideogame = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(`${endpoint}/${id}`);
+      return dispatch({
+        type: DELETE_VIDEOGAME,
+        payload: data,
+      });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
 export function getGenres() {
   return async (dispatch) => {
     // dispatch(setLoading(true));

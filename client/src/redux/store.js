@@ -9,4 +9,5 @@ const store = createStore(
     rootReducer,
     composeEnhancer(applyMiddleware(thunk)) // esta línea es para poder hacer peticiones a un server
 );
+
 export default store;

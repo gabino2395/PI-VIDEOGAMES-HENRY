@@ -1,35 +1,13 @@
 import React, { useEffect, useState, useinput } from "react";
-// import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { postVideogames, getGenres } from "../../redux/actions";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { getGenres, getVideogames, updateVideogame } from "../../redux/actions";
 import axios from "axios";
-import validate from "./Validate";
-import "./CreateGame.css";
-const CreateGame = () => {
-  //////
-  // const [plataformas, setPlataformas] = useState([]);
+// import "./CreateGame.css";
+const endpoint = "http://localhost:3001/videogames";
 
-  // useEffect(() => {
-  //   async function obtenerPlataformas() {
-  //     try {
-  //       const respuesta = await axios.get(
-  //         "https://api.rawg.io/api/platforms?key=968e8c96554f4a3691dd2632e72dac14"
-  //       );
-  //       const nombresPlataformas = respuesta.data.results.map(
-  //         (plataforma) => plataforma.name
-  //       );
-  //       console.log(
-  //         "esto es un console del llamado para plataformas de api en createGame"
-  //       );
-  //       setPlataformas(nombresPlataformas);
-  //       console.log(nombresPlataformas)
-  //     } catch (error) {
-  //       console.error("Error al obtener datos de la API de Rawg: ", error);
-  //     }
-  //   }
-  //   obtenerPlataformas();
-  // }, []);
+const EditGame = () => {
+  //////
 
   const plataformas = [
     "PC",
@@ -86,6 +64,7 @@ const CreateGame = () => {
   ////////
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const genres = useSelector((input) => input.genres);
   const videogames = useSelector((input) => input.videogames);
@@ -192,7 +171,7 @@ const CreateGame = () => {
       })
     );
   };
-  const handleSubmit = (event) => {
+  const handleSubmit =  async (event) => {
     event.preventDefault();
     setError(validate(input));
     if (error) console.log("hola");
@@ -201,10 +180,18 @@ const CreateGame = () => {
     if (Object.values(errorSave).length !== 0) {
       alert("Please, fullfil the required camps.");
     } else {
-      console.log("dame algo");
+      console.log("deberia renderizar editado ok");
       setDisable(false);
-      dispatch(postVideogames(input));
+      // dispatch(updateVideogame(id, input));
+      await axios.put(`${endpoint}/${id}`, input);
 
+      // const updateVideogame = async (id, input) => {
+      //   try {
+      //     await axios.put(`${endpoint}/${id}`, input);
+      //   } catch (error) {
+      //     return error.message;
+      //   }
+      // };
       alert("personaje creado");
       setInput({
         name: "",
@@ -217,9 +204,13 @@ const CreateGame = () => {
       });
       // setdisable(true);
 
-      navigate("/");
+      navigate("/home");
     }
   };
+  useEffect(() => {
+    dispatch(getVideogames());
+    // setLoading(false);
+  }, []);
 
   const buttonDisable = (activityData, errors) => {
     let disable = false;
@@ -399,7 +390,7 @@ const CreateGame = () => {
               "error"
             ) : (
               <button className="comenzar-btn disable" type="submit" disabledd>
-                Crear juego
+                Edit juego
               </button>
             )}
           </form>
@@ -409,7 +400,7 @@ const CreateGame = () => {
   );
 };
 
-export default CreateGame;
+export default EditGame;
 /* 
 
 
