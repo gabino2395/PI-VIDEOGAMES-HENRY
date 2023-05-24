@@ -6,6 +6,5 @@ BACKEND:
 FRONTEND:
 
 -mejorar paginado
-- ordenar y borrar lo que no se use
--dar estilo a login y register
+-ordenar y borrar lo que no se use
 

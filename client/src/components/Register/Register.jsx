@@ -1,10 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { loginValidation } from "../../Utils/Validation";
 import { URL } from "../../Utils/Utils";
 import style from "./Register.module.css";
 
 const Register = ({ setOpenRegister, login }) => {
+  const navigate = useNavigate();
   const [newUser, setNewUser] = useState({
     email: "",
     password: "",
@@ -33,6 +35,7 @@ const Register = ({ setOpenRegister, login }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    navigate("/heroSection");
     singIn(newUser);
   };
 
@@ -45,7 +48,7 @@ const Register = ({ setOpenRegister, login }) => {
     } catch (error) {
       console.log(error);
 
-      // setResponse(error.response.data.error)
+      setResponse(error.response.data.error)
     } finally {
       setNewUser({ ...newUser, email: "", password: "" });
     }
@@ -64,48 +67,60 @@ const Register = ({ setOpenRegister, login }) => {
   };
 
   return (
-    <div className={style.container}>
+    <div className="login-main">
       {!response && (
-        <form onSubmit={handleSubmit} className={style.form}>
+        <form onSubmit={handleSubmit} className="form-login">
           <h2>REGISTER</h2>
-          <div>
-            <label htmlFor="email">Email</label>
-          </div>
+          <div className="input-box">
+            <div>
+              <label htmlFor="email">Email</label>
+            </div>
 
-          <div>
-            <input
-              type="email"
-              name="email"
-              value={newUser.email}
-              placeholder="Enter your email"
-              onChange={handleChange}
-            />
-            {errors.email && <p>{errors.email}</p>}
+            <div>
+              <input
+                type="email"
+                name="email"
+                value={newUser.email}
+                placeholder="Enter your email"
+                onChange={handleChange}
+              />
+              {errors.email && <p>{errors.email}</p>}
+            </div>
           </div>
+          <div className="input-box">
+            <div>
+              <label htmlFor="password">Password:</label>
+            </div>
 
+            <div>
           <div>
-            <label htmlFor="password">Password:</label>
+            <em className="details-password">
+              (6 - 30 characters and 1 number)
+            </em>
           </div>
-          <div>
-            <em>(6 - 30 characters and 1 number)</em>
+              <input
+                type="password"
+                name="password"
+                value={newUser.password}
+                placeholder="Enter your password"
+                onChange={handleChange}
+              />
+              {errors.password && <p>{errors.password}</p>}
+            </div>
           </div>
-
-          <div>
-            <input
-              type="password"
-              name="password"
-              value={newUser.password}
-              placeholder="Enter your password"
-              onChange={handleChange}
-            />
-            {errors.password && <p>{errors.password}</p>}
-          </div>
-
-          <button type="submit" disabled={buttonDisable(newUser, errors)}>
-            Sing up
+          <button
+            type="submit"
+            className="comenzar-btn"
+            disabled={buttonDisable(newUser, errors)}
+          >
+            Sign up
           </button>
-          <button type="button" onClick={() => setOpenRegister(false)}>
-            Close
+          <button
+            type="button"
+            className="comenzar-btn"
+            onClick={() => setOpenRegister(false)}
+          >
+            Already have an account?
           </button>
         </form>
       )}

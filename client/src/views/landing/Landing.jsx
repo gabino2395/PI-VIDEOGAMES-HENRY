@@ -9,7 +9,7 @@ const Landing = ({ login, response, setResponse }) => {
 
   return (
     <div className="">
-      <div className="">
+      <div className="first-page-main">
         {!openRegister && (
           <Login login={login} response={response} setResponse={setResponse} />
         )}
@@ -17,9 +17,9 @@ const Landing = ({ login, response, setResponse }) => {
         {!openRegister && (
           <button
             onClick={() => setOpenRegister(true)}
-            className=""
+            className="sign-up"
           >
-            SING UP
+            Sign Up
           </button>
         )}
 

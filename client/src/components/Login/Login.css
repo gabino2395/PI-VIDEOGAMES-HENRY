@@ -1,0 +1,73 @@
+.login-main {
+  /* border: solid; */
+  height: 600px;
+  width: 600px;
+  /* background: red; */
+  /* background-image: url('../../../public/ai-videogames-pic/photo6.png'); */
+  backdrop-filter: blur(4px);
+
+background-repeat: no-repeat;
+background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-main input {
+  color: black;
+}
+.form-login{
+  /* border: solid; */
+  background: rgb(252, 250, 247);
+  /* backdrop-filter: blur(20px); */
+  width: 300px;
+  height: 00px;
+  /* backdrop-filter: blur(5px); */
+  /* background-image: url('/ai-videogames-pic/photo6.png'); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: solid black; */
+  border-radius: 12px;
+  height: 540px;
+  width: 450px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1em;
+  /* background: rgb(235, 228, 228); */
+  /* box-shadow: 6px 2px 15px 5px rgba(1, 57, 57, 1.7); */
+  overflow-y: scroll;
+
+}
+.first-page-main{
+  /* border: solid red; */
+  /* background: blue; */
+background-image: url('../../../public/ai-videogames-pic/photo6.png');
+height: 100vh;
+background-repeat: no-repeat;
+background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.input-box{
+  display: flex;
+  background: inherit;
+  justify-content: space-around;
+  border: none;
+}
+.sign-up{
+  background: inherit;
+  background: white;
+  padding: 4px;
+  border-radius: 4px;
+  border: none;
+
+}
+.sign-up:hover{
+  cursor: pointer;
+}
+.details-password{
+  font-size: 10px;
+}

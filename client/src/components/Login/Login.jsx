@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { loginValidation } from "../../Utils/Validation";
 // import style from "./Login.module.css";
-
+import "./Login.css"
 const Login = ({ login, response, setResponse }) => {
   const [userData, setUserData] = useState({
     email: "",
@@ -37,9 +37,10 @@ const Login = ({ login, response, setResponse }) => {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="">
-        <h2>ADMISSION</h2>
+    <div className="login-main">
+      <form onSubmit={handleSubmit} className="  form-login">
+        <h2>Login</h2>
+        <div className="input-box">
         <div>
           <label htmlFor="email">Email</label>
         </div>
@@ -51,9 +52,13 @@ const Login = ({ login, response, setResponse }) => {
             placeholder="Your Email"
             onChange={handleChange}
             name="email"
+            className="input-field"
           />
           {errors.email && <p>{errors.email}</p>}
         </div>
+
+        </div>
+<div className="input-box">
 
         <div>
           <label htmlFor="password">Password</label>
@@ -69,8 +74,9 @@ const Login = ({ login, response, setResponse }) => {
           />
           {errors.password && <p>{errors.password}</p>}
         </div>
+</div>
 
-        <button 
+        <button  className="comenzar-btn"
         // disabled={buttonDisable(userData, errors)}
         >enter</button>
       </form>
