@@ -11,6 +11,7 @@ import {
   GET_GENRES,
   EDIT_VIDEOGAME,
   DELETE_VIDEOGAME,
+  CLEAN_VIDEOGAMES,
 } from "./types";
 
 import axios from "axios";
@@ -110,6 +111,12 @@ export function getGenres() {
       payload: res_1,
     });
   };
+}
+
+export const cleanGames = () =>{
+  return {
+      type: CLEAN_VIDEOGAMES,
+  }
 }
 ////aun no
 export const addFav = (character) => {

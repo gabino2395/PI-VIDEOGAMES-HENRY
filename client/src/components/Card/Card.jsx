@@ -19,7 +19,7 @@ const Card = ({ name, image, genres, id, rating, loading, created }) => {
     try {
       console.log("algo");
       await axios.delete(`${endpoint}/${id}`);
-      navigate("/");
+      navigate("/heroSection");
     } catch (error) {
       return error.message;
     }

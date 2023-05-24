@@ -171,7 +171,7 @@ const EditGame = () => {
       })
     );
   };
-  const handleSubmit =  async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError(validate(input));
     if (error) console.log("hola");
@@ -204,7 +204,7 @@ const EditGame = () => {
       });
       // setdisable(true);
 
-      navigate("/home");
+      navigate("/heroSection");
     }
   };
   useEffect(() => {
@@ -231,11 +231,11 @@ const EditGame = () => {
       <div className="form-section-box">
         <div className="img-left-section">
           <h1>
-            Become a hero.. <br />
-            Create your game
+            here go again.. <br />
+            Edit your game
           </h1>
           <img
-            src="/ai-videogames-pic/photo10.png"
+            src="/ai-videogames-pic/photo9.png"
             className="form-section-img img-left"
             alt="aca va imagen"
           />

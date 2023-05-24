@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <>
       <header>
-        <Link to={"/"} className="logo-box">
+        <Link to={"/heroSection"} className="logo-box">
           {" "}
           {/* <img className="logo" src="/logo-icon2.png" alt="" /> */}
           {/* <img className="logo" src="/loco.svg" alt="" /> */}
@@ -32,7 +32,7 @@ const Nav = () => {
             <li>
               {/* <Link>github</Link>
               <Link>linkedin</Link> */}
-              <Link className="navs-link">Login</Link>
+              <Link to={'/'} className="navs-link">LogOut</Link>
             </li>
           </ul>
         </nav>

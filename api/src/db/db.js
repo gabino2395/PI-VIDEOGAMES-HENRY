@@ -7,11 +7,11 @@ const sequelize = new Sequelize(
 );
 const VideogameModel = require("../models/Videogame");
 const GenreModel = require("../models/Genre");
+const UserModel = require("../models/User");
+UserModel(sequelize);
 GenreModel(sequelize);
 VideogameModel(sequelize);
 //modelo user
-const UserModel = require("../models/User");
-UserModel(sequelize);
 
 const fs = require("fs");
 const path = require("path");
@@ -40,11 +40,11 @@ const modelDefiners = [];
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Videogame, Genre, User } = sequelize.models;
+const { Videogame, Genre,User  } = sequelize.models;
 
 //N:N
-// User.belongsToMany(Videogame, { through: "favorites" }); // se crea la tabla intermedia favorites
-// Videogame.belongsToMany(User, { through: "favorites" });
+User.belongsToMany(Videogame, { through: "favorites" }); // se crea la tabla intermedia favorites
+Videogame.belongsToMany(User, { through: "favorites" });
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);

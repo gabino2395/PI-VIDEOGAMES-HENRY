@@ -217,7 +217,7 @@ const CreateGame = () => {
       });
       // setdisable(true);
 
-      navigate("/");
+      navigate("/heroSection");
     }
   };
 

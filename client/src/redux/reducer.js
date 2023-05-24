@@ -12,6 +12,7 @@ import {
   GET_GENRES,
   DELETE_VIDEOGAME,
   EDIT_VIDEOGAME,
+  CLEAN_VIDEOGAMES,
 } from "./types";
 
 const initialState = {
@@ -92,6 +93,12 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         videogames: payload,
+      };
+    case CLEAN_VIDEOGAMES:
+      return {
+        ...state,
+        videogames: [],
+        allVideogames: [],
       };
     default:
       return { ...state };
