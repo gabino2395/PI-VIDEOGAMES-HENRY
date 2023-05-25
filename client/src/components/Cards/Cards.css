@@ -1,11 +1,8 @@
 .cards-main-container {
   height: 100vh;
   width: 100vw;
-  background: green;
-  /* background: #17181f; */
-  background-image: url("../../../public/ai-videogames-pic/photo1.png");
+  background: black;
   background-image: url("../../../public/ai-videogames-pic/photo13.jpg");
-
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -13,7 +10,6 @@
   position: relative;
   overflow: hidden;
   justify-content: end;
-  /* border: solid white; */
   text-align: center;
 
 }
@@ -22,14 +18,11 @@
   border: solid;
 }
 .cards-container {
-  /* height: 100vh;
-  width: 100vw; */
   width: 100%;
   width: 800px;
   height: 600px;
   align-items: center;
   justify-content: center;
-  /* border: solid white; */
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
@@ -41,9 +34,6 @@
   flex-direction: column;
 }
 .loading{
-  /* border: solid;
-  width: 400px;
-  height: 500px; */
   text-align: center;
   display: flex;
   justify-content: center;
@@ -54,7 +44,6 @@
   border: solid;
 }
 .img-skeleton{
-  /* border: solid; */
   color: aliceblue;
 
   border-radius: 7px;

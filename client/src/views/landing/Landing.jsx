@@ -1,8 +1,8 @@
-// import { Login, Register } from "../../Components";
+//hooks
 import { useState } from "react";
+//components
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
-// import style from "./Landing.module.css";
 
 const Landing = ({ login, response, setResponse }) => {
   const [openRegister, setOpenRegister] = useState(false);
@@ -15,10 +15,7 @@ const Landing = ({ login, response, setResponse }) => {
         )}
 
         {!openRegister && (
-          <button
-            onClick={() => setOpenRegister(true)}
-            className="sign-up"
-          >
+          <button onClick={() => setOpenRegister(true)} className="sign-up">
             Sign Up
           </button>
         )}
@@ -34,7 +31,6 @@ const Landing = ({ login, response, setResponse }) => {
         </div>
       </div>
 
-      <div className=""></div>
     </div>
   );
 };

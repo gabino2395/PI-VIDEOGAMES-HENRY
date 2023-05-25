@@ -1,22 +1,17 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  filterByGenres,
-  filterCreated,
-  // getGenres,
-  getVideogames,
-  orderGames,
-} from "../../redux/actions";
-
-import axios from "axios";
-import TransitionComp from "../transitionComp/TransitionComp.jsX";
-import Cards from "../Cards/Cards";
+//css
 import "./Selectors.css";
-import Paginated from "../Paginated/Paginated";
+//hooks
+import { useState, useEffect } from "react";
+//redux
+import { useDispatch } from "react-redux";
+import { filterByGenres, filterCreated, orderGames } from "../../redux/actions";
+//components
+import Cards from "../Cards/Cards";
 import SearchBar from "../SearchBar/SearchBar";
-const endpointGenre = "http://localhost:3001/genres";
-
+//
+import axios from "axios";
+import { URL } from "../../Utils/Utils";
 const Catalog = () => {
   const dispatch = useDispatch();
   const [genres, setGenres] = useState([]);
@@ -30,7 +25,7 @@ const Catalog = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get(endpointGenre);
+        const response = await axios.get(`${URL}/genres`);
         setGenres(response.data);
       } catch (error) {
         console.log(error);
@@ -41,10 +36,6 @@ const Catalog = () => {
   const [errors, setErrors] = useState("");
 
   const [stateCard, setStateCard] = useState("Welcome");
-  // const handleGenre = (event) => {
-  //   dispatch(getGenres(event.target.value));
-  //   setGenre((genre = event.target.value));
-  // };
   const handleOrder = (event) => {
     dispatch(orderGames(event.target.value));
     // setCurrentPage(1);
@@ -75,7 +66,6 @@ const Catalog = () => {
           </div>
           <div className="select">
             <select onChange={handleOrder}>
-              {/* <option value="All">All</option> */}
               <option value="Ascendant">Ascendant</option>
               <option value="Descendant">Descendant</option>
             </select>

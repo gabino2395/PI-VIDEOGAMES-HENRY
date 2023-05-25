@@ -4,29 +4,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-bottom: 20px; */
-  /* gap: 0.1em; */
   border-radius: 5px;
-    padding: 7px;
-    background: white;
-    color: black;
+  padding: 7px;
+  background: white;
+  color: black;
 
 }
 
 .select {
   border-radius: 5px;
-  /* padding: 7px; */
   color: white;
-  /* margin:3px; */
-  /* border: none; */
   width: 150px;
   border: solid white;
   background-color: #1a1a1a;
- 
+
 }
-.input-bar{
+
+.input-bar {
   border: solid;
-  /* margin-top: 20px; */
 }
 
 .search-input {
@@ -37,7 +32,8 @@
   color: black;
 
 }
-.input-btn{
+
+.input-btn {
   background: inherit;
   color: white;
   border: solid oldlace;
@@ -45,24 +41,25 @@
   width: 25px;
   border-radius: 9px;
   background: black;
-  /* color: black; */
   transition: 0.3s;
   border: solid black;
 }
-.input-btn:hover{
+
+.input-btn:hover {
   background: white;
   color: black;
   cursor: pointer;
   border: solid black;
 }
-.input-error-box{
-  /* border: solid; */
-  /* height: 100px; */
+
+.input-error-box {
+ 
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.error-text{
+
+.error-text {
   color: red;
   font-size: 18px;
   margin-bottom: 10px;

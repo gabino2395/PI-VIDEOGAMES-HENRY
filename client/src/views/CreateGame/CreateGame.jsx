@@ -1,35 +1,15 @@
-import React, { useEffect, useState, useinput } from "react";
-// import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { postVideogames, getGenres } from "../../redux/actions";
-import axios from "axios";
-import validate from "./Validate";
+//css
 import "./CreateGame.css";
+//hooks
+import React, { useEffect, useState, useinput } from "react";
+//redux
+import { useDispatch, useSelector } from "react-redux";
+import { postVideogames, getGenres } from "../../redux/actions";
+//router
+import { Link, useNavigate } from "react-router-dom";
+import validate from "./Validate";
 const CreateGame = () => {
   //////
-  // const [plataformas, setPlataformas] = useState([]);
-
-  // useEffect(() => {
-  //   async function obtenerPlataformas() {
-  //     try {
-  //       const respuesta = await axios.get(
-  //         "https://api.rawg.io/api/platforms?key=968e8c96554f4a3691dd2632e72dac14"
-  //       );
-  //       const nombresPlataformas = respuesta.data.results.map(
-  //         (plataforma) => plataforma.name
-  //       );
-  //       console.log(
-  //         "esto es un console del llamado para plataformas de api en createGame"
-  //       );
-  //       setPlataformas(nombresPlataformas);
-  //       console.log(nombresPlataformas)
-  //     } catch (error) {
-  //       console.error("Error al obtener datos de la API de Rawg: ", error);
-  //     }
-  //   }
-  //   obtenerPlataformas();
-  // }, []);
 
   const plataformas = [
     "PC",
@@ -135,12 +115,7 @@ const CreateGame = () => {
     if (!input.rating || input.rating < 0 || input.rating > 5) {
       error.rating = "The rating must be < 0 & > 5...";
     }
-    // if (
-    //   !input.website.includes("https://" || "http://") ||
-    //   !input.website.includes(".com" || ".ar")
-    // ) {
-    //   error.website = "Enter a Valid URL (.com, .ar)";
-    // }
+
     if (!input.genres.length) {
       error.genres = "This field is required.";
     }
@@ -215,27 +190,14 @@ const CreateGame = () => {
         genres: [],
         rating: Number,
       });
-      // setdisable(true);
 
       navigate("/heroSection");
     }
   };
 
-  const buttonDisable = (activityData, errors) => {
-    let disable = false;
-    if (activityData.country.length < 1) disable = true;
-    if (!Object.values(activityData).every((value) => value)) disable = true;
-    if (!Object.values(errors).every((value) => !value)) disable = true;
-    return disable;
-  };
   return (
     <div className="createGame-page">
-      <Link to="/home">
-        {/* home */}
-        {/* <button>volver</button> */}
-      </Link>
-      {/* <h1>Crear juego!</h1> */}
-      {/* <Pong/> */}
+      <Link to="/home"></Link>
 
       <div className="form-section-box">
         <div className="img-left-section">
@@ -278,10 +240,7 @@ const CreateGame = () => {
               <label htmlFor="released">Released: </label>
               {error.released && <p className="error-form">{error.released}</p>}
               <input
-                // className="input-field"
                 className="date-field"
-                // className="rating-field"
-
                 type="date"
                 value={input.released}
                 name="released"
@@ -301,7 +260,6 @@ const CreateGame = () => {
                 value={input.rating}
                 name="rating"
                 placeholder="Rating*"
-                // onChange={(e) => handleChange(e)}
                 onChange={handleChange}
                 min={0}
                 max={5}
@@ -318,7 +276,6 @@ const CreateGame = () => {
                 value={input.image}
                 name="image"
                 placeholder="Image*"
-                // onChange={(e) => handleChange(e)}
                 onChange={handleChange}
                 required
               />
@@ -330,7 +287,6 @@ const CreateGame = () => {
               <select
                 className="genres-field"
                 onChange={handleSelectGenre}
-                // onChange={(e) => handleSelectorGenres(e)}
                 required
                 value={input.genres}
               >
@@ -377,12 +333,10 @@ const CreateGame = () => {
             </ul>
 
             <div className="  textarea-box ">
-              {/* <label>Description: </label> */}
 
               <textarea
                 className="input-field textarea form-control"
                 value={input.description}
-                // onChange={(e) => handleChange(e)}
                 onChange={handleChange}
                 name="description"
                 placeholder="Description*"
@@ -396,7 +350,7 @@ const CreateGame = () => {
               <p className="error-form">{error.description}</p>
             )}
             {disable ? (
-              "error"
+              ""
             ) : (
               <button className="comenzar-btn disable" type="submit" disabledd>
                 Crear juego

@@ -1,13 +1,15 @@
 import React from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+//css
 import "./Card.css";
-import { useDispatch } from "react-redux";
-import { deleteVideogame } from "../../redux/actions";
+//redux
+// import { useDispatch } from "react-redux";
+//router
+import { Link, Navigate, useNavigate } from "react-router-dom";
+//
 import axios from "axios";
-const endpoint = "http://localhost:3001/videogames";
-
+import { URL } from "../../Utils/Utils";
 const Card = ({ name, image, genres, id, rating, loading, created }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleClick = (id) => {
     dispatch(deleteVideogame(id));
@@ -18,7 +20,7 @@ const Card = ({ name, image, genres, id, rating, loading, created }) => {
   const deleteVideogame = async (id) => {
     try {
       console.log("algo");
-      await axios.delete(`${endpoint}/${id}`);
+      await axios.delete(`${URL}/videogames/${id}`);
       navigate("/heroSection");
     } catch (error) {
       return error.message;
@@ -40,7 +42,7 @@ const Card = ({ name, image, genres, id, rating, loading, created }) => {
                     onClick={() => handleClick(id)}
                     type=""
                   >
-                    <span class="material-symbols-outlined delete-btn">
+                    <span className="material-symbols-outlined delete-btn">
                       delete
                     </span>
                   </button>
@@ -51,10 +53,9 @@ const Card = ({ name, image, genres, id, rating, loading, created }) => {
                   <Link
                     to={`/editGame/${id}`}
                     className="delete-btn edit"
-                    // onClick={() => handleEdit(id)}
                     type=""
                   >
-                    <span class="material-symbols-outlined edit">edit</span>{" "}
+                    <span className="material-symbols-outlined edit">edit</span>{" "}
                   </Link>
                 ) : (
                   ""
@@ -64,10 +65,6 @@ const Card = ({ name, image, genres, id, rating, loading, created }) => {
                     <p>{genre}</p>
                   ))}{" "}
                 </ul>
-
-                {/* <p>{genres[0]}</p> */}
-                {/* <p>{genres[1]}</p> */}
-                {/* <p>{genres[0] + "/" + genres[1] && genres[1]} </p> */}
               </li>
             </ul>
             <h3 className="card-detail-name">{name}</h3>

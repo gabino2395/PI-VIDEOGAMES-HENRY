@@ -1,5 +1,7 @@
 import React from "react";
+//css
 import "./LandingPage.css";
+//router
 import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
@@ -34,10 +36,8 @@ const HeroSection = () => {
         <video
           autoPlay
           muted
-          loop
-          // src="/valorant-main.mp4"
+          // loop
           src="valorant2.mp4"
-          // src="/godOfWar.mp4"
         ></video>
       </div>
     </section>

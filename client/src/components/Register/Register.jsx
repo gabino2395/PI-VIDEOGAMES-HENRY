@@ -1,9 +1,11 @@
+//hooks
 import { useState } from "react";
-import axios from "axios";
+//router
 import { useNavigate } from "react-router-dom";
+//
+import axios from "axios";
 import { loginValidation } from "../../Utils/Validation";
 import { URL } from "../../Utils/Utils";
-import style from "./Register.module.css";
 
 const Register = ({ setOpenRegister, login }) => {
   const navigate = useNavigate();
@@ -45,10 +47,11 @@ const Register = ({ setOpenRegister, login }) => {
       setResponse(data.user);
       setUserData(newUser);
       setCreated(true);
+      alert("usuario creado correctamente");
     } catch (error) {
+      setResponse(error.response.data.error);
+      alert("error en la creacion de usuario");
       console.log(error);
-
-      setResponse(error.response.data.error)
     } finally {
       setNewUser({ ...newUser, email: "", password: "" });
     }
@@ -70,8 +73,8 @@ const Register = ({ setOpenRegister, login }) => {
     <div className="login-main">
       {!response && (
         <form onSubmit={handleSubmit} className="form-login">
-          <h2>REGISTER</h2>
-          <div className="input-box">
+          <h2>Register</h2>
+          <div className="input-box-login">
             <div>
               <label htmlFor="email">Email</label>
             </div>
@@ -87,17 +90,17 @@ const Register = ({ setOpenRegister, login }) => {
               {errors.email && <p>{errors.email}</p>}
             </div>
           </div>
-          <div className="input-box">
+          <div className="input-box-login">
             <div>
               <label htmlFor="password">Password:</label>
             </div>
 
             <div>
-          <div>
-            <em className="details-password">
-              (6 - 30 characters and 1 number)
-            </em>
-          </div>
+              <div>
+                <em className="details-password">
+                  (6 - 30 characters and 1 number)
+                </em>
+              </div>
               <input
                 type="password"
                 name="password"
@@ -126,7 +129,7 @@ const Register = ({ setOpenRegister, login }) => {
       )}
       {response && (
         <div className={style.response}>
-          <h2>{response}</h2>
+          <h2 className="input-field">{response}</h2>
           <button onClick={handleMessage}>OK</button>
         </div>
       )}

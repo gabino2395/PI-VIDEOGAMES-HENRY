@@ -1,15 +1,15 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+//css
 import "./Nav.css";
+//router
+import { Link, NavLink } from "react-router-dom";
 const Nav = () => {
   return (
     <>
       <header>
         <Link to={"/heroSection"} className="logo-box">
           {" "}
-          {/* <img className="logo" src="/logo-icon2.png" alt="" /> */}
-          {/* <img className="logo" src="/loco.svg" alt="" /> */}
-          <span class="material-symbols-outlined logo">
+          <span className="material-symbols-outlined logo">
             keyboard_double_arrow_up
           </span>
         </Link>
@@ -18,7 +18,7 @@ const Nav = () => {
           <ul>
             <li>
               <Link to={"/home"} className="font-3 navs-link">
-                Landing
+                Games
               </Link>
               <Link to={"/createGame"} className="font-3 navs-link">
                 Create
@@ -30,57 +30,13 @@ const Nav = () => {
         <nav className="logo-box">
           <ul>
             <li>
-              {/* <Link>github</Link>
-              <Link>linkedin</Link> */}
-              <Link to={'/'} className="navs-link">LogOut</Link>
+              <Link to={"/"} className="navs-link">
+                <span className="material-symbols-outlined">person</span>
+              </Link>
             </li>
           </ul>
         </nav>
       </header>
-      {/* <header className="header">
-       <div>
-         <Link to="/" className="logo">
-           Salitre
-         </Link>
-         <img
-           className="imgLogo"
-           src="/imgLogo/surfboard.png"
-           alt="imagen de logo"
-         />
-       </div>
-       <ul className="header-ul">
-         <li className="header-li">
-           <NavLink to="/" className="href">
-             home
-           </NavLink>
-         </li>
-
-
-
-         <ul className="header-li header-ul">
-           <li className="header-li">
-             <NavLink to="category/1" className="href">
-               surfboards
-             </NavLink>
-           </li>
-           <li className="header-li">
-             <NavLink to="category/2" className="href">
-               t-shirts
-             </NavLink>
-           </li>
-           <li className="header-li">
-             <NavLink to="category/3" className="href">
-               shorts
-             </NavLink>
-           </li>
-         </ul>
-
-
-
-        
-       </ul>
-     </header> */}
-      {/* <section className="banner"></section> */}
     </>
   );
 };

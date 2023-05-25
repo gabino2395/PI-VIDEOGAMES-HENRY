@@ -1,12 +1,9 @@
 .paginated-box {
   color: red;
-  /* border: solid; */
   min-height: 40px;
 }
 
 .paginated-box nav {
-  /* text-align: center; */
-  /* border: solid; */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -19,35 +16,26 @@
   text-align: center;
   gap: 0.2em;
   transition: 1.8s;
-width: 500px;
-overflow-x: scroll;
-margin-bottom: 20px;
-  /* border: solid; */
+  width: 500px;
+  overflow-x: scroll;
+  margin-bottom: 20px;
 }
 
 .paginated-ul li {
   align-items: center;
   transition-timing-function: ease-in;
-
-  /* transition: 1.8s; */
-
 }
 
 .paginated-ul li :hover {
   cursor: pointer;
   color: black;
   transition: 0.5s;
-background: #f4f7f9;
-background: #898e96;
+  background: #f4f7f9;
+  background: #898e96;
 }
 
 .anchor-paginated {
   border: solid;
-  width: 30px;
-  /* color: red; */
-  /* background: #f4f7f9; */
-  padding: 5px;
   color: #898e96;
   border-radius: 5px;
 }
-

@@ -1,6 +1,6 @@
 import React from "react";
+//css
 import "./Paginated.css";
-import { NavLink } from "react-router-dom";
 const Paginated = ({ gamesPerPage, allGames, paginated }) => {
   const pageNumbers = [];
   for (let i = 0; i < Math.ceil(allGames / gamesPerPage); i++) {
@@ -13,9 +13,9 @@ const Paginated = ({ gamesPerPage, allGames, paginated }) => {
           {pageNumbers &&
             pageNumbers.map((number) => {
               return (
-                <li key={number} 
+                <li
+                  key={number}
 
-                // className="anchor-paginated"
                 >
                   {" "}
                   <a
@@ -23,9 +23,8 @@ const Paginated = ({ gamesPerPage, allGames, paginated }) => {
                     onClick={() => paginated(number)}
                   >
                     {number}
-                  {/* "ver mas" */}
+                    {/* "ver mas" */}
                   </a>
-                 
                 </li>
               );
             })}

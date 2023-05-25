@@ -1,7 +1,5 @@
 import {
-  ADD_FAV,
-  REMOVE_FAV,
-  FILTER,
+
   ORDER,
   GET_VIDEOGAMES,
   FILTER_BY_GENRES,
@@ -15,13 +13,11 @@ import {
 } from "./types";
 
 import axios from "axios";
-const endpoint = "http://localhost:3001/videogames";
-const endpointGenres = "http://localhost:3001/genres";
-
+import { URL } from "../Utils/Utils";
 export function getVideogames() {
   return async (dispatch) => {
     // dispatch(setLoading(true));
-    const res = await axios(endpoint);
+    const res = await axios(`${URL}/videogames`);
     const res_1 = await res.data;
     return dispatch({
       type: GET_VIDEOGAMES,
@@ -32,7 +28,7 @@ export function getVideogames() {
 export const getVideogamebyName = (name) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${endpoint}?name=${name}`);
+      const { data } = await axios(`${URL}/videogames?name=${name}`);
       return dispatch({
         type: GET_VIDEOGAME_BY_NAME,
         payload: data,
@@ -65,7 +61,7 @@ export const filterCreated = (payload) => {
 export const postVideogames = (payload) => {
   return async (dispatch) => {
     // dispatch(setLoading(true));
-    const res = await axios.post(endpoint, payload);
+    const res = await axios.post(`${URL}/videogames`, payload);
     const res_1 = await res.data;
     return dispatch({
       type: POST_VIDEOGAMES,
@@ -77,7 +73,7 @@ export const postVideogames = (payload) => {
 export const updateVideogame = async (id,game) => {
   return async (dispatch) => {
     try {
-        const { data } = await axios.put(`${endpoint}/${id}`, game)
+        const { data } = await axios.put(`${URL}/videogames/${id}`, game)
         return dispatch({
             type: EDIT_VIDEOGAME,
             payload: data
@@ -91,7 +87,7 @@ export const updateVideogame = async (id,game) => {
 export const deleteVideogame = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(`${endpoint}/${id}`);
+      const { data } = await axios.delete(`${URL}/videogames/${id}`);
       return dispatch({
         type: DELETE_VIDEOGAME,
         payload: data,
@@ -104,7 +100,7 @@ export const deleteVideogame = (id) => {
 export function getGenres() {
   return async (dispatch) => {
     // dispatch(setLoading(true));
-    const res = await axios(endpointGenres);
+    const res = await axios(`${URL}/genres`);
     const res_1 = await res.data;
     return dispatch({
       type: GET_GENRES,
@@ -118,41 +114,3 @@ export const cleanGames = () =>{
       type: CLEAN_VIDEOGAMES,
   }
 }
-////aun no
-export const addFav = (character) => {
-  const endpoint = "http://localhost:3001/rickandmorty/fav";
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.post(endpoint, character);
-
-      if (!data.length) throw Error("No hay favoritos");
-
-      return dispatch({
-        type: ADD_FAV,
-        payload: data,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-};
-
-export const removeFav = (id) => {
-  const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`;
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.delete(endpoint);
-
-      return dispatch({
-        type: REMOVE_FAV,
-        payload: data,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-};
-
-export const filterCards = (gender) => {
-  return { type: FILTER, payload: gender };
-};

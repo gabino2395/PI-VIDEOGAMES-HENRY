@@ -6,5 +6,4 @@ BACKEND:
 FRONTEND:
 
 -mejorar paginado
--ordenar y borrar lo que no se use
 

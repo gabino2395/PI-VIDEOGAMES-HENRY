@@ -1,11 +1,13 @@
+//hooks
 import React, { useEffect, useState, useinput } from "react";
+//redux
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
 import { getGenres, getVideogames, updateVideogame } from "../../redux/actions";
+//router
+import { Link, useNavigate, useParams } from "react-router-dom";
+//
 import axios from "axios";
-// import "./CreateGame.css";
-const endpoint = "http://localhost:3001/videogames";
-
+import { URL } from "../../Utils/Utils";
 const EditGame = () => {
   //////
 
@@ -67,7 +69,7 @@ const EditGame = () => {
   const { id } = useParams();
 
   const genres = useSelector((input) => input.genres);
-  const videogames = useSelector((input) => input.videogames);
+  // const videogames = useSelector((input) => input.videogames);
   const [error, setError] = useState({});
   const [input, setInput] = useState({
     name: "",
@@ -114,12 +116,7 @@ const EditGame = () => {
     if (!input.rating || input.rating < 0 || input.rating > 5) {
       error.rating = "The rating must be < 0 & > 5...";
     }
-    // if (
-    //   !input.website.includes("https://" || "http://") ||
-    //   !input.website.includes(".com" || ".ar")
-    // ) {
-    //   error.website = "Enter a Valid URL (.com, .ar)";
-    // }
+
     if (!input.genres.length) {
       error.genres = "This field is required.";
     }
@@ -145,7 +142,6 @@ const EditGame = () => {
         [event.target.name]: event.target.value,
       })
     );
-    // console.log(input)
   };
   const handleSelectGenre = (event) => {
     setInput({
@@ -183,15 +179,7 @@ const EditGame = () => {
       console.log("deberia renderizar editado ok");
       setDisable(false);
       // dispatch(updateVideogame(id, input));
-      await axios.put(`${endpoint}/${id}`, input);
-
-      // const updateVideogame = async (id, input) => {
-      //   try {
-      //     await axios.put(`${endpoint}/${id}`, input);
-      //   } catch (error) {
-      //     return error.message;
-      //   }
-      // };
+      await axios.put(`${URL}/videogames/${id}`, input);
       alert("personaje creado");
       setInput({
         name: "",
@@ -202,32 +190,17 @@ const EditGame = () => {
         genres: [],
         rating: Number,
       });
-      // setdisable(true);
 
       navigate("/heroSection");
     }
   };
   useEffect(() => {
     dispatch(getVideogames());
-    // setLoading(false);
   }, []);
 
-  const buttonDisable = (activityData, errors) => {
-    let disable = false;
-    if (activityData.country.length < 1) disable = true;
-    if (!Object.values(activityData).every((value) => value)) disable = true;
-    if (!Object.values(errors).every((value) => !value)) disable = true;
-    return disable;
-  };
   return (
     <div className="createGame-page">
-      <Link to="/home">
-        {/* home */}
-        {/* <button>volver</button> */}
-      </Link>
-      {/* <h1>Crear juego!</h1> */}
-      {/* <Pong/> */}
-
+      <Link to="/home"></Link>
       <div className="form-section-box">
         <div className="img-left-section">
           <h1>
@@ -258,7 +231,6 @@ const EditGame = () => {
                 className="input-field"
                 type="text"
                 name="name"
-                // onChange={(event) => handleChange(event)}
                 onChange={handleChange}
                 value={input.name}
                 placeholder="Name*"
@@ -269,15 +241,11 @@ const EditGame = () => {
               <label htmlFor="released">Released: </label>
               {error.released && <p className="error-form">{error.released}</p>}
               <input
-                // className="input-field"
                 className="date-field"
-                // className="rating-field"
-
                 type="date"
                 value={input.released}
                 name="released"
                 placeholder="Released*"
-                // onChange={(e) => handleChange(e)}
                 onChange={handleChange}
                 required
               />
@@ -292,7 +260,6 @@ const EditGame = () => {
                 value={input.rating}
                 name="rating"
                 placeholder="Rating*"
-                // onChange={(e) => handleChange(e)}
                 onChange={handleChange}
                 min={0}
                 max={5}
@@ -309,7 +276,6 @@ const EditGame = () => {
                 value={input.image}
                 name="image"
                 placeholder="Image*"
-                // onChange={(e) => handleChange(e)}
                 onChange={handleChange}
                 required
               />
@@ -321,7 +287,6 @@ const EditGame = () => {
               <select
                 className="genres-field"
                 onChange={handleSelectGenre}
-                // onChange={(e) => handleSelectorGenres(e)}
                 required
                 value={input.genres}
               >
@@ -368,12 +333,9 @@ const EditGame = () => {
             </ul>
 
             <div className="  textarea-box ">
-              {/* <label>Description: </label> */}
-
               <textarea
                 className="input-field textarea form-control"
                 value={input.description}
-                // onChange={(e) => handleChange(e)}
                 onChange={handleChange}
                 name="description"
                 placeholder="Description*"
@@ -387,7 +349,7 @@ const EditGame = () => {
               <p className="error-form">{error.description}</p>
             )}
             {disable ? (
-              "error"
+              ""
             ) : (
               <button className="comenzar-btn disable" type="submit" disabledd>
                 Edit juego
