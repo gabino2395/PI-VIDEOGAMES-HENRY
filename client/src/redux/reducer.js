@@ -17,6 +17,7 @@ const initialState = {
   videogames: [],
   allVideogames: [],
   genres: [],
+  ratingVideogames: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -26,6 +27,7 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         videogames: payload,
         allVideogames: payload,
+        ratingVideogames: payload,
       };
 
     case FILTER_BY_GENRES:
@@ -42,20 +44,23 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         videogames: games.filter((el) => el.genres == payload),
       };
-      case FILTER_PLATFORMS:
-        const gamesPlatforms = [...state.allVideogames];
-  
-        const filterPlatforms = games.filter((el) => el.genres == payload);
-        if (payload === "All platforms") {
-          return {
-            ...state,
-            videogames: state.allVideogames,
-          };
-        }
+
+    case FILTER_PLATFORMS:
+      const gamesPlatforms = state.allVideogames;
+      console.log(gamesPlatforms);
+      const filterPlatforms = gamesPlatforms.filter(
+        (el) => el.genres == payload
+      );
+      if (payload === "All platforms") {
         return {
           ...state,
-          videogames: gamesPlatforms.filter((el) => el.platforms == payload),
+          videogames: state.allVideogames,
         };
+      }
+      return {
+        ...state,
+        videogames: gamesPlatforms.filter((el) => el.platforms == payload),
+      };
     case ORDER:
       const gamesOrdered = [...state.videogames];
 

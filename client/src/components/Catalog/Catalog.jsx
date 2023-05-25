@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   filterByGenres,
+  filterByPlarforms,
   filterCreated,
   orderGames,
   orderRating,
@@ -17,7 +18,16 @@ import SearchBar from "../SearchBar/SearchBar";
 //
 import axios from "axios";
 import { URL } from "../../Utils/Utils";
+import { plataformas } from "../../Utils/Utils";
+
 const Catalog = () => {
+
+
+useEffect(()=>{
+
+  console.log(plataformas)
+},[])
+
   const dispatch = useDispatch();
   const [genres, setGenres] = useState([]);
   let [genre, setGenre] = useState("All genres");
@@ -58,7 +68,11 @@ const Catalog = () => {
     setGenre((genre = event.target.value));
     setStateCard(event.target.value);
   };
-
+  const handleFilterPlatform = (event) => {
+    dispatch(filterByPlarforms(event.target.value));
+    // setGenre((genre = event.target.value));
+    setStateCard(event.target.value);
+  };
   const handleFilterCreated = (event) => {
     dispatch(filterCreated(event.target.value));
     setStateCard(event.target.value);
@@ -107,6 +121,29 @@ const Catalog = () => {
               {genres.map((el) => (
                 <option key={el.id} value={el.name}>
                   {el.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="select-platforms">
+            <select
+              onChange={(event) => handleFilterPlatform(event)}
+              // onChange={(event) => handleGenre(event)}
+              name="All platforms"
+              id=""
+              // value={genre}
+            >
+              <option
+                value="All platforms"
+                //  selected="true"
+                //   disabled="disabled"
+              >
+                All platforms
+              </option>
+
+              {plataformas.map((el) => (
+                <option key={el.id} value={el}>
+                  {el}
                 </option>
               ))}
             </select>

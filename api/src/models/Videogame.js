@@ -27,6 +27,9 @@ module.exports = (sequelize) => {
         unique: true,
         validate: {
           notEmpty: true,
+          len:{
+            args: [3, 155],
+          }
         },
       },
       description: {
