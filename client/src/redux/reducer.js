@@ -10,6 +10,7 @@ import {
   EDIT_VIDEOGAME,
   CLEAN_VIDEOGAMES,
   ORDER_RATING,
+  FILTER_PLATFORMS,
 } from "./types";
 
 const initialState = {
@@ -41,6 +42,20 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         videogames: games.filter((el) => el.genres == payload),
       };
+      case FILTER_PLATFORMS:
+        const gamesPlatforms = [...state.allVideogames];
+  
+        const filterPlatforms = games.filter((el) => el.genres == payload);
+        if (payload === "All platforms") {
+          return {
+            ...state,
+            videogames: state.allVideogames,
+          };
+        }
+        return {
+          ...state,
+          videogames: gamesPlatforms.filter((el) => el.platforms == payload),
+        };
     case ORDER:
       const gamesOrdered = [...state.videogames];
 

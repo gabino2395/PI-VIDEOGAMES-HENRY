@@ -164,6 +164,11 @@ form input {
 }
 
 
+.comenzar-btn:after {
+ 
+  transition: all 0.4s ease;
+
+}
 
 .comenzar-btn {
   border: solid white;

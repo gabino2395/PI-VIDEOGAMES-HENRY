@@ -10,6 +10,7 @@ import {
   DELETE_VIDEOGAME,
   CLEAN_VIDEOGAMES,
   ORDER_RATING,
+  FILTER_PLATFORMS,
 } from "./types";
 
 import axios from "axios";
@@ -48,6 +49,12 @@ export function filterByGenres(genres) {
   };
 }
 
+export const filterByPlarforms = (platforms) => {
+  return {
+    type: FILTER_PLATFORMS,
+    payload: platforms,
+  };
+};
 export const orderGames = (order) => {
   return { type: ORDER, payload: order };
 };
