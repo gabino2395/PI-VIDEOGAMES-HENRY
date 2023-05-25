@@ -1,9 +1,12 @@
 
 BACKEND:
-
+-deployar DB
+-deployar backend
 
 
 FRONTEND:
-
+-deployar frontend
 -mejorar paginado
+-practicar filtro de platforms
+-entender flujo de app
 

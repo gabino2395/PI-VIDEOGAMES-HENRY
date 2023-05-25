@@ -1,5 +1,4 @@
 import {
-
   ORDER,
   GET_VIDEOGAMES,
   FILTER_BY_GENRES,
@@ -10,6 +9,7 @@ import {
   EDIT_VIDEOGAME,
   DELETE_VIDEOGAME,
   CLEAN_VIDEOGAMES,
+  ORDER_RATING,
 } from "./types";
 
 import axios from "axios";
@@ -51,6 +51,9 @@ export function filterByGenres(genres) {
 export const orderGames = (order) => {
   return { type: ORDER, payload: order };
 };
+export const orderRating = (order) => {
+  return { type: ORDER_RATING, payload: order };
+};
 
 export const filterCreated = (payload) => {
   return {
@@ -70,18 +73,18 @@ export const postVideogames = (payload) => {
   };
 };
 
-export const updateVideogame = async (id,game) => {
+export const updateVideogame = async (id, game) => {
   return async (dispatch) => {
     try {
-        const { data } = await axios.put(`${URL}/videogames/${id}`, game)
-        return dispatch({
-            type: EDIT_VIDEOGAME,
-            payload: data
-        })
+      const { data } = await axios.put(`${URL}/videogames/${id}`, game);
+      return dispatch({
+        type: EDIT_VIDEOGAME,
+        payload: data,
+      });
     } catch (error) {
-        return error.message;
+      return error.message;
     }
-}
+  };
 };
 
 export const deleteVideogame = (id) => {
@@ -109,8 +112,8 @@ export function getGenres() {
   };
 }
 
-export const cleanGames = () =>{
+export const cleanGames = () => {
   return {
-      type: CLEAN_VIDEOGAMES,
-  }
-}
+    type: CLEAN_VIDEOGAMES,
+  };
+};

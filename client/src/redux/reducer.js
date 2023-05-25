@@ -1,5 +1,4 @@
 import {
-
   ORDER,
   GET_VIDEOGAMES,
   FILTER_BY_GENRES,
@@ -10,6 +9,7 @@ import {
   DELETE_VIDEOGAME,
   EDIT_VIDEOGAME,
   CLEAN_VIDEOGAMES,
+  ORDER_RATING,
 } from "./types";
 
 const initialState = {
@@ -50,6 +50,16 @@ const reducer = (state = initialState, { type, payload }) => {
           payload === "Ascendant"
             ? gamesOrdered.sort((a, b) => a.id - b.id)
             : gamesOrdered.sort((a, b) => b.id - a.id),
+      };
+    case ORDER_RATING:
+      const gamesOrderedRate = [...state.videogames];
+
+      return {
+        ...state,
+        videogames:
+          payload === "Worst-rating"
+            ? gamesOrderedRate.sort((a, b) => a.rating - b.rating)
+            : gamesOrderedRate.sort((a, b) => b.rating - a.rating),
       };
     case FILTER_CREATED:
       const allGames = state.allVideogames;

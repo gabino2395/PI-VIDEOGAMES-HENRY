@@ -5,7 +5,12 @@ import "./Selectors.css";
 import { useState, useEffect } from "react";
 //redux
 import { useDispatch } from "react-redux";
-import { filterByGenres, filterCreated, orderGames } from "../../redux/actions";
+import {
+  filterByGenres,
+  filterCreated,
+  orderGames,
+  orderRating,
+} from "../../redux/actions";
 //components
 import Cards from "../Cards/Cards";
 import SearchBar from "../SearchBar/SearchBar";
@@ -42,6 +47,12 @@ const Catalog = () => {
     setAux(true);
     setStateCard(event.target.value);
   };
+  const handleOrderRate = (event) => {
+    dispatch(orderRating(event.target.value));
+    // setCurrentPage(1);
+    setAux(true);
+    setStateCard(event.target.value);
+  };
   const handleFilterGenre = (event) => {
     dispatch(filterByGenres(event.target.value));
     setGenre((genre = event.target.value));
@@ -65,12 +76,18 @@ const Catalog = () => {
             />
           </div>
           <div className="select">
+            <select onChange={handleOrderRate}>
+              <option value="">Rating</option>
+              <option value="Best-rating">Best rating</option>
+              <option value="Worst-rating">Worst rating</option>
+            </select>
+          </div>
+          <div className="select">
             <select onChange={handleOrder}>
               <option value="Ascendant">Ascendant</option>
               <option value="Descendant">Descendant</option>
             </select>
           </div>
-
           <div className="select-genres">
             <select
               onChange={(event) => handleFilterGenre(event)}
