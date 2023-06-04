@@ -7,6 +7,5 @@ BACKEND:
 FRONTEND:
 -deployar frontend
 -mejorar paginado
--practicar filtro de platforms
 -entender flujo de app
 

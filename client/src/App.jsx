@@ -47,6 +47,7 @@ function App() {
   return (
     <>
       {shownav && <Nav logOut={logOut} />}
+      {/* <Nav logOut={logOut} /> */}
       <Routes>
         <Route
           path="/"
@@ -61,7 +62,7 @@ function App() {
 
         <Route path="/heroSection" element={<HeroSection />} />
         <Route path="/home" element={<LandingPage />} />
-        <Route path="/pong" element={<Pong />} />
+        {/* <Route path="/pong" element={<Pong />} /> */}
 
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/createGame" element={<CreateGame />} />

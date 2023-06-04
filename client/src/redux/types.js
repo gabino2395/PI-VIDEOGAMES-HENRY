@@ -17,7 +17,4 @@ export const GET_GENRES = "GET_GENRES";
 export const EDIT_VIDEOGAME = "EDIT_VIDEOGAME";
 export const DELETE_VIDEOGAME = "DELETE_VIDEOGAME";
 export const CLEAN_VIDEOGAMES = "CLEAN_VIDEOGAMES";
-
-// prueba filter de platforms
-
-export const FILTER_PLATFORMS="FILTER_PLATFORMS"
+export const FILTER_PLATFORMS = "FILTER_PLATFORMS";

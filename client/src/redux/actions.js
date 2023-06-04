@@ -18,7 +18,7 @@ import { URL } from "../Utils/Utils";
 export function getVideogames() {
   return async (dispatch) => {
     // dispatch(setLoading(true));
-    const res = await axios(`${URL}/videogames`);
+    const res = await axios.get(`${URL}/videogames`);
     const res_1 = await res.data;
     return dispatch({
       type: GET_VIDEOGAMES,
@@ -49,12 +49,13 @@ export function filterByGenres(genres) {
   };
 }
 
-export const filterByPlarforms = (platforms) => {
+export function filterByPlatforms(platforms) {
   return {
     type: FILTER_PLATFORMS,
     payload: platforms,
   };
-};
+}
+
 export const orderGames = (order) => {
   return { type: ORDER, payload: order };
 };

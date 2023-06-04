@@ -28,6 +28,7 @@ const Cards = () => {
   };
   useEffect(() => {
     dispatch(getVideogames());
+    
     setLoading(false);
   }, []);
 

@@ -13,10 +13,7 @@ const Paginated = ({ gamesPerPage, allGames, paginated }) => {
           {pageNumbers &&
             pageNumbers.map((number) => {
               return (
-                <li
-                  key={number}
-
-                >
+                <li key={number}>
                   {" "}
                   <a
                     className="anchor-paginated"

@@ -8,61 +8,62 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 //
 import axios from "axios";
 import { URL } from "../../Utils/Utils";
+import { plataformas } from "../../Utils/Utils";
 const EditGame = () => {
   //////
 
-  const plataformas = [
-    "PC",
-    "PlayStation 5",
-    "PlayStation 4",
-    "Xbox One",
-    "Xbox Series S/X",
-    "Nintendo Switch",
-    "iOS",
-    "Android",
-    "Nintendo 3DS",
-    "Nintendo DS",
-    "Nintendo DSi",
-    "macOS",
-    "Linux",
-    "Xbox 360",
-    "Xbox",
-    "PlayStation 3",
-    "PlayStation 2",
-    "PlayStation",
-    "PS Vita",
-    "PSP",
-    "Wii U",
-    "Wii",
-    "GameCube",
-    "Nintendo 64",
-    "Game Boy Advance",
-    "Game Boy Color",
-    "Game Boy",
-    "SNES",
-    "NES",
-    "Classic Macintosh",
-    "Apple II",
-    "Commodore / Amiga",
-    "Atari 7800",
-    "Atari 5200",
-    "Atari 2600",
-    "Atari Flashback",
-    "Atari 8-bit",
-    "Atari ST",
-    "Atari Lynx",
-    "Atari XEGS",
-    "Genesis",
-    "SEGA Saturn",
-    "SEGA CD",
-    "SEGA 32X",
-    "SEGA Master System",
-    "Dreamcast",
-    "3DO",
-    "Jaguar",
-    "Game Gear",
-    "Neo Geo",
-  ];
+  // const plataformas = [
+  //   "PC",
+  //   "PlayStation 5",
+  //   "PlayStation 4",
+  //   "Xbox One",
+  //   "Xbox Series S/X",
+  //   "Nintendo Switch",
+  //   "iOS",
+  //   "Android",
+  //   "Nintendo 3DS",
+  //   "Nintendo DS",
+  //   "Nintendo DSi",
+  //   "macOS",
+  //   "Linux",
+  //   "Xbox 360",
+  //   "Xbox",
+  //   "PlayStation 3",
+  //   "PlayStation 2",
+  //   "PlayStation",
+  //   "PS Vita",
+  //   "PSP",
+  //   "Wii U",
+  //   "Wii",
+  //   "GameCube",
+  //   "Nintendo 64",
+  //   "Game Boy Advance",
+  //   "Game Boy Color",
+  //   "Game Boy",
+  //   "SNES",
+  //   "NES",
+  //   "Classic Macintosh",
+  //   "Apple II",
+  //   "Commodore / Amiga",
+  //   "Atari 7800",
+  //   "Atari 5200",
+  //   "Atari 2600",
+  //   "Atari Flashback",
+  //   "Atari 8-bit",
+  //   "Atari ST",
+  //   "Atari Lynx",
+  //   "Atari XEGS",
+  //   "Genesis",
+  //   "SEGA Saturn",
+  //   "SEGA CD",
+  //   "SEGA 32X",
+  //   "SEGA Master System",
+  //   "Dreamcast",
+  //   "3DO",
+  //   "Jaguar",
+  //   "Game Gear",
+  //   "Neo Geo",
+  // ];
   ////////
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -89,6 +90,11 @@ const EditGame = () => {
         error.name = "The entered value is not valid.";
       }
       error.name = "This field is required.";
+    } else if (input.name.length > 30) {
+      error.name = "Please write a shorter name";
+    }
+    if (input.name.length > 100) {
+      error.name = "Please write a shorter name";
     }
     if (
       !input.image.includes("https://" || "http://") ||
@@ -180,7 +186,7 @@ const EditGame = () => {
       setDisable(false);
       // dispatch(updateVideogame(id, input));
       await axios.put(`${URL}/videogames/${id}`, input);
-      alert("personaje creado");
+      alert("personaje editado con exito");
       setInput({
         name: "",
         description: "",

@@ -2,14 +2,14 @@ import React from "react";
 //css
 import "./Card.css";
 //redux
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 //router
 import { Link, Navigate, useNavigate } from "react-router-dom";
 //
 import axios from "axios";
 import { URL } from "../../Utils/Utils";
 const Card = ({ name, image, genres, id, rating, loading, created }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleClick = (id) => {
     dispatch(deleteVideogame(id));
@@ -21,6 +21,7 @@ const Card = ({ name, image, genres, id, rating, loading, created }) => {
     try {
       console.log("algo");
       await axios.delete(`${URL}/videogames/${id}`);
+      alert('personaje eliminado con exito')
       navigate("/heroSection");
     } catch (error) {
       return error.message;

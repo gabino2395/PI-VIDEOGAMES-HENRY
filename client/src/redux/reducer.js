@@ -42,15 +42,12 @@ const reducer = (state = initialState, { type, payload }) => {
       }
       return {
         ...state,
-        videogames: games.filter((el) => el.genres == payload),
+        // videogames: games.filter((el) => el.genres == payload),
+        videogames: games.filter((el) => el.genres.includes(payload)),
       };
-
     case FILTER_PLATFORMS:
-      const gamesPlatforms = state.allVideogames;
-      console.log(gamesPlatforms);
-      const filterPlatforms = gamesPlatforms.filter(
-        (el) => el.genres == payload
-      );
+      const gamesPlatforms = [...state.allVideogames];
+
       if (payload === "All platforms") {
         return {
           ...state,
@@ -59,7 +56,7 @@ const reducer = (state = initialState, { type, payload }) => {
       }
       return {
         ...state,
-        videogames: gamesPlatforms.filter((el) => el.platforms == payload),
+        videogames: gamesPlatforms.filter((el) => el.platforms.includes(payload)),
       };
     case ORDER:
       const gamesOrdered = [...state.videogames];
@@ -105,6 +102,7 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         genres: payload,
       };
+
     case GET_VIDEOGAME_BY_NAME:
       return {
         ...state,

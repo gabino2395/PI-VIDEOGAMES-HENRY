@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   filterByGenres,
-  filterByPlarforms,
+  filterByPlatforms,
   filterCreated,
   orderGames,
   orderRating,
@@ -21,12 +21,9 @@ import { URL } from "../../Utils/Utils";
 import { plataformas } from "../../Utils/Utils";
 
 const Catalog = () => {
-
-
-useEffect(()=>{
-
-  console.log(plataformas)
-},[])
+  // useEffect(() => {
+  //   console.log(plataformas);
+  // }, []);
 
   const dispatch = useDispatch();
   const [genres, setGenres] = useState([]);
@@ -68,11 +65,12 @@ useEffect(()=>{
     setGenre((genre = event.target.value));
     setStateCard(event.target.value);
   };
+
   const handleFilterPlatform = (event) => {
-    dispatch(filterByPlarforms(event.target.value));
-    // setGenre((genre = event.target.value));
+    dispatch(filterByPlatforms(event.target.value));
     setStateCard(event.target.value);
   };
+
   const handleFilterCreated = (event) => {
     dispatch(filterCreated(event.target.value));
     setStateCard(event.target.value);
@@ -125,13 +123,13 @@ useEffect(()=>{
               ))}
             </select>
           </div>
-          <div className="select-platforms">
+
+          {/* <div className="select-genres">
             <select
               onChange={(event) => handleFilterPlatform(event)}
               // onChange={(event) => handleGenre(event)}
               name="All platforms"
               id=""
-              // value={genre}
             >
               <option
                 value="All platforms"
@@ -147,7 +145,8 @@ useEffect(()=>{
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
+
           <div className="select">
             <select name="Videogames" onChange={handleFilterCreated}>
               <option value="All">Origin</option>
