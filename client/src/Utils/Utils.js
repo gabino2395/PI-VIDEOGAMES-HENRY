@@ -1,5 +1,5 @@
-export const URL = "http://localhost:3001";
-
+// export const URL = "http://localhost:3001";
+export const URL='https://pi-videogames-production-f55d.up.railway.app'
 export const plataformas = [
   "PC",
   "PlayStation 5",
